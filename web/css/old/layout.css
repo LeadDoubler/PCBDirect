@@ -1,0 +1,269 @@
+* {
+	margin: 0;
+   padding: 0;
+   border: none;
+	font-size: 1em;
+}
+body {
+   font: 62.5% Verdana, Arial, Helvetica, sans-serif;
+}
+.container{	
+	width: 1003px;
+	margin: 0 auto;
+}
+.header{
+	background: url(../images/index-header.gif) top repeat-x;
+}
+.header h1{
+	margin: 0;
+	padding: 66px 0 0 29px;
+}
+.header h1 a {
+	float: left;
+	display: block;
+	background:url(../images/index-header-h1.gif) no-repeat;
+	width: 430px;
+	height: 82px;	
+   /* hide from IE Mac \*/
+   text-indent: -999em;
+   overflow: hidden;
+   /* end hide */
+}
+* html>body .header h1 a {
+   letter-spacing: -999em;	
+}
+
+.navigation h2{
+	height: 0px;
+	 /* hide from IE Mac \*/
+   text-indent: -999em;
+   overflow: hidden;
+   /* end hide */
+
+}
+
+* html>body .navigation h2{
+   letter-spacing: -999em;	
+}
+.navigation{
+	
+	
+}
+.navigation ul{
+	float: right;
+	padding: 0;
+	list-style: none;
+	background:url(../images/index-navigation.gif) no-repeat;
+	height: 42px;
+	margin: -39px 10px 0 0;
+}
+.navigation ul li{
+	float: left;
+}
+
+.navigation ul li a{
+	float: left;
+	height: 42px;
+	background:url(../images/index-navigation.gif) no-repeat;
+	 /* hide from IE Mac \*/
+   text-indent: -999em;
+   overflow: hidden;
+   /* end hide */
+
+}
+
+* html>body .navigation ul li a{
+   letter-spacing: -999em;	
+}
+.navigation ul li.activa a, .navigation ul li a:hover{
+	background:none;
+}
+.navigation ul li.omos a{
+	background-position: 0 -42px;
+	width: 95px;
+}	
+
+.navigation ul li.priser a{
+	background-position: -95px -42px;
+	width: 90px;
+}
+
+.navigation ul li.kontakt a{
+	background-position: -185px -42px;
+	width: 90px;
+}
+
+.navigation ul li.herbor a{
+	background-position: -275px -42px;
+	width: 105px;
+}	
+
+.banner img{
+	float:left;
+	margin: 38px 0 0;
+}
+
+
+.content{
+	padding-top:10px;
+        float: left;
+	margin: 0;	
+	border-bottom: 10px #007ABB solid;
+}
+
+.content div.news{
+	float: left;
+	background: url(../images/index-content-news.gif) repeat-x;
+	width: 322px;
+	margin: 0 0 0;
+	padding: 0 0 20px;
+	border: none;
+}
+
+.content div.news h2{
+	float: left;
+	background:url(../images/index-content-news-h2.gif) no-repeat;
+	height: 95px;
+	width:  274px;
+	margin: 21px 25px 0 28px;
+ /* hide from IE Mac \*/
+   text-indent: -999em;
+   overflow: hidden;
+   /* end hide */
+
+}
+
+* html>body .content div.news h2{
+   letter-spacing: -999em;	
+}
+.content div.news h3{
+	font-size: 135%;
+	padding: 0 0 0 28px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	color: #0060B6;
+	font-weight: normal;
+
+}
+.content div.news p{
+	padding: 21px 25px 0 28px;
+	margin: 0;
+	text-align:left;
+	font-size: 130%;
+	color: #545557;
+
+}
+
+.content div.news img{
+	margin: 0 0 0 20px;
+
+}
+
+.content div.news a{
+	float: right;
+	margin: -25px 55px 0 0;
+	position:relative;
+	color: #0060B6;
+	font-size: 150%;
+}
+
+.content div.contents{
+        background: url(../images/index-content-more-p.gif) repeat-x;
+	float: left;
+	margin: 0 0 0 3px;
+        padding-left:3px;
+	width: 675px;
+	font-size: 130%;
+}
+
+.content div.more{
+	float: left;
+	margin: 0 0px 0 0px;
+	width: 225px;
+}
+.content div.more h2{
+	background: url(../images/index-content-more-h2.gif);
+	width: 224px;
+	height: 82px;
+	margin: 0;
+
+}
+
+.content div.more h2 span{
+	float: left;
+	margin: 38px 0 0 73px;
+	width: 82px;
+	height: 26px;
+/* hide from IE Mac \*/
+   text-indent: -999em;
+   overflow: hidden;
+   /* end hide */
+
+}
+
+* html>body .content div.more h2 span{
+   letter-spacing: -999em;	
+}
+
+.content div.more h2.nyt span{
+	background: url(../images/index-content-more-h2-nyt.gif) no-repeat; 
+}
+.content div.more h2.brugt span{
+	background: url(../images/index-content-more-h2-brugt.gif) no-repeat; 
+}
+.content div.more h2.priser span{
+	background: url(../images/index-content-more-h2-priser.gif) no-repeat; 
+}
+
+.content div.more p{
+	background: url(../images/index-content-more-p.gif) repeat-x;
+	padding: 10px 14px 0;
+	/*font-size: 130%;*/
+	color: #6C6D70;
+	margin:0pt 0pt 35px;
+}
+
+.content div.more a{
+	
+	margin: 10px 14px 0;
+	position:relative;
+	color: #0060B6;
+	font-size: 130%;
+}
+
+.content div.priser p{
+	margin:0pt 0pt 50px;
+        
+}
+
+.footer{
+	float: left;	
+	background: #DFE2E6;
+	height: 176px;
+	padding: 0 0 0 785px;
+	margin: 2px 0 0;
+	width: 218px;
+	
+}
+.footer h2{
+	margin: 28px 0 0;	
+	font-size: 140%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#6C6D70;
+	font-weight: normal;
+
+}
+.footer h3{
+	margin: 18px 0 11px;
+	color:#006CBA;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+
+}
+.footer p{	
+	margin: 0;
+	font-size: 120%;
+	color:#006CBA;
+	font-weight: normal;
+
+}

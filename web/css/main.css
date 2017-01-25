@@ -1,0 +1,691 @@
+@import "../websiteInclude/template_css.css";
+/*@import "ddcolortabs.css";*/
+/*@import "../websiteInclude/rokmininews.css";*/
+/*@import "../websiteInclude/system.css";*/
+/*@import "../websiteInclude/general.css";*/
+/*@import "../websiteInclude/rokmoomenu.css";*/
+
+/*@import "../websiteInclude/typography.css";*/
+/*@import "../websiteInclude/blue.css";*/
+
+.br {
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+
+body {
+    font-family: Verdana, Helvetica, serif;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    font: arial;
+    font-size: 11px;
+    color: #0d507a;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #003399;
+}
+
+a.bulink {
+    background: url(../images/bullet.gif) 5px center no-repeat;
+    font-family: Verdana, Georgia, serif;
+    font-size: 11px;
+    font-weight: 100;
+    font-style: normal;
+    color: #0d507a;
+    text-decoration: none;
+    padding: 5px 5px 5px 25px;
+    line-height: 25px;
+    outline: none;
+}
+
+a.bulink:hover {
+    text-decoration: underline;
+    color: #000000;
+    outline: none;
+}
+
+.login a {
+    text-decoration: none;
+    padding-left: 10px;
+    outline: none;
+}
+
+.login a:hover {
+    text-decoration: underline;
+    color: #FFF;
+}
+
+img.info {
+    vertical-align: top;
+    margin-top: 4px;
+    /*width: 13px;*/
+    /*height: 14px;*/
+    padding: 2px 0 0 1px;
+}
+
+.content12px {
+    font-size: 12px;
+    color: #333333;
+    text-align: left;
+    padding: 3px 0;
+    line-height: 18px;
+}
+
+.title1 {
+    font: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+
+.word-wrap {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+ul {
+    padding: 0;
+    margin: 0; /*list-style: none;*/
+}
+
+.nowraptd {
+    white-space: nowrap;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+    width: 100%; /*width: 865px;*/
+    height: 100%;
+}
+
+.header {
+    float: left;
+    width: 90%;
+    font-family: Verdana, serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: default;
+    color: #000;
+    background: url(../images/icon.gif) left top no-repeat;
+    padding: 2px 0 10px 33px;
+    margin: 20px 30px;
+    border-bottom: 1px dotted #000;
+}
+
+.right {
+    position: absolute;
+    float: right;
+    text-align: left;
+    vertical-align: top;
+}
+
+.box {
+    position: relative;
+}
+
+.floatLeft {
+    float: left;
+    width: 32%;
+    margin: 5px 30px;
+}
+
+.floatright {
+    float: left;
+    width: 32%;
+    text-align: left;
+    margin: 5px 30px;
+}
+
+.title {
+    font-family: Verdana, serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0A3F60;
+    cursor: default;
+    padding: 2px 0;
+    margin: 2px 0;
+    vertical-align: top;
+}
+
+.content {
+    font-family: Verdana, serif;
+    font-size: 11px;
+    font-weight: 100;
+    color: #2b2b2b;
+    text-align: right;
+}
+
+.margintop {
+    margin-top: 15px;
+}
+
+input.login {
+    margin: 4px 0;
+    background: #0A3F60 url(../images/b_line.gif) repeat-x left top;
+    font-family: Verdana, serif;
+    font-size: 11px;
+    color: #FFF;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 5px;
+}
+
+input.logininner {
+    margin: 0;
+    background-color: #0A3D5D;
+    border: none;
+    padding: 5px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    font-family: Verdana, serif;
+    font-size: 11px;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.login {
+    margin: 0;
+    background-color: #0A3D5D;
+    border: none;
+    padding: 5px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login a {
+    font-family: Verdana, serif;
+    font-size: 11px;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px;
+
+}
+
+.login a:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.float_Left {
+    float: left;
+    width: 95%;
+    margin: 5px 25px;
+}
+
+.float_LeftInner {
+    float: left;
+    width: 45%;
+    margin: 5px 0;
+}
+
+select, textarea, input.textwidthadjust {
+    margin: 4px 0;
+    border: 1px #7F9DB9 solid;
+    background: #fff;
+    width: 225px;
+    outline: none;
+    z-index: 0;
+    font-size: 11px;
+}
+
+.progress {
+    /*background: #0A3F60 url(../images/b_line.gif) repeat-x scroll left top;*/
+    color: #1478B7;
+    font-size: 10px;
+    font-family: Verdana, arial, serif;
+    font-weight: bold;
+    height: 16px;
+    overflow: hidden;
+    padding-left: 5px;
+    /*width: 1px;*/
+}
+
+input.textwidthadjust {
+    width: 222px;
+}
+
+.form_left {
+    float: left;
+    color: #58595B;
+}
+
+.form_right {
+    float: left;
+}
+
+.contenterror {
+    font-family: arial, serif;
+    font-size: 10px;
+    font-weight: 100;
+    color: red;
+    cursor: default;
+    float: left;
+    margin: 0;
+    text-align: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.marginleft {
+    position: relative;
+    float: left;
+    margin: 5px 0 0 30px;
+    width: 90%;
+    padding: 0;
+    cursor: default;
+}
+
+.content10px {
+    font-size: 10px;
+    color: #000;
+    vertical-align: top;
+}
+
+.contentBigBlue {
+    color: #1478B7;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*TOOL TIP STYLE*/
+.ToolTip {
+    background-color: #1478B7;
+    border: 1px solid #003D5D;
+    font-weight: bolder;
+    font-size: 11px;
+    line-height: 16px;
+    padding: 3px;
+    position: absolute;
+    visibility: hidden;
+    max-width: 300px;
+    z-index: 99999;
+}
+
+.ToolTipTD {
+    color: white;
+    font-family: verdana, serif;
+    font-size: 11px;
+    padding: 2px;
+}
+
+/*TOOL TIP STYLE*/
+.ShareBox {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #efefef;
+    filter: alpha(opacity = 5);
+    -moz-opacity: 0.05;
+    opacity: 0.05;
+}
+
+.rounded_leftrightborder {
+    border-right: 1px solid #96c5df;
+    border-left: 1px solid #96c5df;
+}
+
+/* new color=187ab7 */
+.roundedtable {
+    z-index: 9999;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #FFFFFF;
+}
+
+.round-table {
+    font-family: Verdana, serif;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.round-table thead {
+    background: #0A3F60 url(../images/b_line.gif) left top repeat-x;
+}
+
+.round-table tbody td {
+    padding: 2px 5px;
+    height: 15px;
+    border-left: none;
+}
+
+.round-table thead td {
+    cursor: default;
+    font-family: Verdana, serif;
+    font-size: 10px;
+    color: white;
+    font-weight: 700;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 3px 5px 4px 5px;
+    border-left: 1px solid #fff;
+    text-align: left
+}
+
+/*.round-table thead td:hover { color:#000; }*/
+/* extra rules for even and odd rows */
+.gray0 {
+    background: #fff;
+    height: 15px;
+    font-family: Verdana, serif;
+    font-size: 10px;
+    color: #2f2f2f;
+    font-weight: normal;
+    vertical-align: top;
+    text-align: left;
+}
+
+.gray1 {
+    background-color: #EBF3F5;
+    height: 15px;
+    font-family: Verdana, serif;
+    font-size: 10px;
+    color: #2f2f2f;
+    font-weight: normal;
+    vertical-align: top;
+    text-align: left;
+}
+
+/*@ Line Block Border Start*/
+#blockline h1, #blockline h2, #blockline p {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+#blockline h1 {
+    font-size: 2.5em;
+    color: #fff;
+}
+
+#blockline h2 {
+    font-size: 2em;
+    color: #06a;
+    border: 0;
+}
+
+#blockline p {
+    padding-bottom: 0.5em;
+}
+
+#blockline h2 {
+    padding-top: 0.5em;
+}
+
+#blockline {
+    background: transparent;
+    margin: 0;
+}
+
+.xtop, .xbottom {
+    display: block;
+    background: transparent;
+    font-size: 1px;
+}
+
+.xb1, .xb2, .xb3, .xb4 {
+    display: block;
+    overflow: hidden;
+}
+
+.xb1, .xb2, .xb3 {
+    height: 1px;
+}
+
+.xb2, .xb3, .xb4 {
+    background: #0D507A;
+    border-left: 1px solid #0D507A;
+    border-right: 1px solid #0D507A;
+}
+
+.xb1 {
+    margin: 0 5px;
+    background: #0D507A;
+}
+
+.xb2 {
+    margin: 0 3px;
+    border-width: 0 2px;
+}
+
+.xb3 {
+    margin: 0 2px;
+}
+
+.xb4 {
+    height: 2px;
+    margin: 0 1px;
+}
+
+.blocklinecontent {
+    font-family: Verdana, serif;
+    cursor: default;
+    font-weight: bold;
+    color: white;
+    background: #0D507A;
+    border-color: #0D507A;
+    border-width: 0 1px;
+    text-align: center;
+    padding: 0 10px 0 10px;
+}
+
+/*Shadow CSS START*/
+#shadow-container {
+    position: relative;
+    left: 3px;
+    top: 3px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+#shadow-container .shadow2, #shadow-container .shadow3, #shadow-container .container {
+    position: relative;
+    left: -1px;
+    top: -1px;
+}
+
+#shadow-container .shadow1 {
+    /*background: #F1F0F1;*/
+    background: transparent;
+}
+
+#shadow-container .shadow2 {
+    /*background: #DBDADB;*/
+    background: transparent;
+}
+
+#shadow-container .shadow3 {
+    background: #B8B6B8;
+}
+
+#shadow-container .container {
+    background: #C1D8FF;
+    border: 1px solid #848284;
+    padding: 10px;
+    width: auto;
+}
+
+/*Shadow CSS END*/
+
+/*Blue theme CSS*/
+div.wrapper {
+    margin: 0 auto;
+    width: 962px;
+    padding: 0;
+}
+
+#left-column {
+    width: 0;
+    padding: 0;
+}
+
+#right-column {
+    width: 0;
+    padding: 0;
+}
+
+#center-column {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+.bc-blue .showcase-div {
+    background: url(../images/blue/showcase-div.png) 0 0 repeat-x;
+}
+
+.bc-blue #showcase .column-1 {
+    border-right: 1px solid #166C97;
+}
+
+/*Colored Tabs for Specification pages*/
+.ddcolortabs {
+    padding: 5px 0 0 0;
+    width: 100%;
+    background: transparent;
+    voice-family: "\"}\"";
+    voice-family: inherit;
+    clear: both;
+    width: 100%;
+    height: 23px;
+}
+
+.ddcolortabs ul {
+    font: normal 9px Verdana, Arial, sans-serif;
+    margin: 1px;
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+}
+
+.ddcolortabs li {
+    display: inline;
+    margin: 0 2px 0 0;
+    padding: 0;
+}
+
+.ddcolortabs a {
+    float: left;
+    color: #fff;
+    cursor: pointer;
+    background: #E2F4FF url(../images/color_tabs_left.gif) no-repeat left top;
+    margin: 0 2px 0 0;
+    padding: 0 0 0 3px;
+    text-decoration: none;
+    letter-spacing: 0;
+}
+
+.ddcolortabs a span {
+    float: left;
+    display: block;
+    background: transparent url(../images/color_tabs_right.gif) no-repeat right top;
+    padding: 6px 10px 3px 7px;
+}
+
+.ddcolortabs a.current {
+    float: left;
+    color: #fff;
+    background: #E2F4FF url(../images/color_tabs_left1.gif) no-repeat left top;
+    margin: 0 2px 0 0;
+    padding: 0 0 0 3px;
+    text-decoration: none;
+    letter-spacing: 0;
+}
+
+.ddcolortabs a.current span {
+    float: left;
+    display: block;
+    background: transparent url(../images/color_tabs_right1.gif) no-repeat right top;
+    padding: 6px 10px 3px 7px;
+    color: #FFF;
+}
+
+.ddcolortabs a.disabled {
+    font-style: italic;
+    float: left;
+    color: #fff;
+    cursor: default;
+    background: #E2F4FF url(../images/gray_tabs_left1.gif) no-repeat left top;
+    margin: 0 2px 0 0;
+    padding: 0 0 0 3px;
+    text-decoration: none;
+    letter-spacing: 0;
+}
+
+.ddcolortabs a.disabled span {
+    float: left;
+    display: block;
+    background: transparent url(../images/gray_tabs_right1.gif) no-repeat right top;
+    padding: 6px 10px 3px 7px;
+    color: #cfcfcf;
+}
+
+.ddcolortabs a span {
+    color: #FFF;
+    float: none;
+}
+
+.ddcolortabs a:hover {
+    background-color: #fff;
+}
+
+.ddcolortabs a:hover span {
+    background-color: #fff;
+}
+
+.ddcolortabs a.current, #ddcolortabs a.current span, .ddcolortabs a.disabled, #ddcolortabs a.disabled span {
+/*currently selected tab*/
+    background-color: #fff;
+}
+
+.ddcolortabsline {
+    clear: both;
+    padding: 0;
+    width: 100%;
+    height: 8px;
+    line-height: 8px;
+    background: #678b3f;
+    border-top: 1px solid #fff; /*Remove this to remove border between bar and tabs*/
+}
+
+.tabcontainer {
+    clear: left;
+    width: 100%; /*width of 2nd level sub menus*/
+    height: 1.5em; /*height of 2nd level sub menus. Set to largest's sub menu's height to avoid jittering.*/
+    border-top: 1px solid #A6D0E6;
+    height: 100%;
+    outline: none;
+}
+
+.tabcontent {
+    background-color: #FFFFFF;
+    border-left: 1px solid #A6D0E6;
+    border-right: 1px solid #A6D0E6;
+    border-bottom: 1px solid #A6D0E6;
+    padding: 5px;
+    outline: none;
+}
+/*Colored Tabs for Specification pages*/

@@ -1,0 +1,11 @@
+body {
+   text-align: center;
+}
+.container {
+	text-align:left;
+}
+
+/* fix para IE6 */
+*html .content div.news h2{
+	margin: 21px 9px 0 15px;
+}

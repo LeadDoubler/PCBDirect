@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context crossContext="true" debug="5" docBase="azical" path="/azical" reloadable="true">
+  <Logger className="org.apache.catalina.logger.FileLogger" prefix="localhost_nvc3_log." suffix=".txt" timestamp="true"/>
+  
+  <Resource 
+  auth="Container" 
+  driverClassName="com.mysql.jdbc.Driver" 
+  logAbandoned="true" 
+  maxActive="100" 
+  maxIdle="5" 
+  minEvicatableIdleTimeMillis="60000" 
+  name="jdbc/vb3" 
+  password="start" 
+  removeAbandoned="true" 
+  removeAbandonedTimeout="60" 
+  testOnBorrw="true" 
+  testWhileIdle="true" 
+  timeBetweenEvictionRunsMillis="10000" 
+  type="javax.sql.DataSource" 
+  url="jdbc:mysql://localhost:3306/azical"
+  username="root" 
+  validationQuery="select 1"/>
+</Context>
