@@ -15,7 +15,7 @@
         </div>
     </stripes:layout-component>
     <stripes:layout-component name="complete">
-        <c:if test="${not empty pageContext.request.parameterMap.get('home')}">
+        <c:if test="${not empty pageContext.request.parameterMap.home}">
 
             <div id="templates">
                 <%@ include file="/productTemplate/productTemplatesHome.jsp"%>
