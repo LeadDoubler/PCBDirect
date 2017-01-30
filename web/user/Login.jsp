@@ -9,9 +9,13 @@
     </stripes:layout-component>
 
     <stripes:layout-component name="topMenu">
-        <div id="topMenu">
-            <a href="/azical/startup/Startup.action?home"><img src="/azical/images/logo-trans-small.png"/></a>
-            <a onclick="$('#templates').hide(); $('#loginBox').fadeIn();" href="#/">LOGIN</a>
+            <div class="contactinfo">
+                <div id="et-info">CVR: 29417717 | +45 6613 0768 | <a href="mailto:sales@azitech.dk">sales@azitech.dk</a> | <a onclick="$('#templates').hide(); $('#loginBox').fadeIn();" href="#/" class="loginlink">LOGIN</a></div>
+           
+            </div>
+        <div id="topMenu"><img src="/azical/images/logo-trans-small.png"/>
+            
+           
         </div>
     </stripes:layout-component>
     <stripes:layout-component name="complete">
