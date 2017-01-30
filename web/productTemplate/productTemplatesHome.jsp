@@ -10,7 +10,7 @@
                 <h2>${productTemplate.title}</h2>
                 <h5><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${productTemplate.totalPrintSize}"/> m²</h5>
             </div>
-            <h5 style="font-weight: normal">${productTemplate.description}</h5>
+            <h5>${productTemplate.description}</h5>
             <div>
                 <h4>DKK <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${productTemplate.price}" /></h4>
                 <h4><a href="${pageContext.request.contextPath}/productTemplate/ProductTemplate.action?orderProduct&productTemplate=${productTemplate}">Buy now</a></h4>
@@ -51,6 +51,7 @@
         display: inline-block;
         margin: 10px;
         background: #FBFBFB;
+        max-width: 350px;
     }
 
     .productTemplate:hover {
@@ -59,13 +60,18 @@
 
     .productTemplate img {
         width: 100%;
-        max-width: 275px;
     }
 
     .productTemplate h1, .productTemplate h2, .productTemplate h3, .productTemplate h4, .productTemplate h5 {
         padding: 10px 0 !important;
         font-weight: bold;
         margin: 0 !important;
+    }
+    
+    .productTemplate > h5 {
+        font-weight: normal; 
+        overflow-y: auto; 
+        height: 50px;
     }
 
     .adminInfo {

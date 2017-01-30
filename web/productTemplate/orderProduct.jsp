@@ -63,6 +63,7 @@
             .joined > div {
                 margin-right: 20px;
                 display: inline-block;
+                max-width: 150px;
             }
 
         </style>
@@ -71,22 +72,28 @@
 
                 var width = $('#width').val();
                 var length = $('#length').val();
-                var total = ${actionBean.productTemplate.totalPrintSize};
-                var price = ${actionBean.productTemplate.price};
-                var m2 = (width * length) / 10000 / 100;
 
-                var units = parseInt(total / m2);
-                var unitPrice = parseInt((price / units) * 100) / 100;
+                if (width.length > 0 && length.length > 0 && !isNaN(width) && !isNaN(length)) {
 
-                $('#units').text(units);
-                $('#unitPrice').text(unitPrice);
+                    var total = ${actionBean.productTemplate.totalPrintSize};
+                    var price = ${actionBean.productTemplate.price};
+                    var m2 = (width * length) / 10000 / 100;
 
-                $('#specQuantity').val(units);
-                $('#specWidth').val(width);
-                $('#specHeight').val(length);
-                $('#specUnitPrice').val(unitPrice);
+                    var units = parseInt(total / m2);
+                    var unitPrice = parseInt((price / units) * 100) / 100;
 
-                $('#result').slideDown();
+                    $('#units').text(units);
+                    $('#unitPrice').text(unitPrice);
+
+                    $('#specQuantity').val(units);
+                    $('#specWidth').val(width);
+                    $('#specHeight').val(length);
+                    $('#specUnitPrice').val(unitPrice);
+
+                    $('#result').slideDown();
+                } else {
+                    alert("Please input a valid number in 'Width' and 'Length'")
+                }
             }
         </script>
 

@@ -20,12 +20,6 @@
     border-bottom: 1px solid #D8D8D8;
     padding: 10px 0 20px 10px;
 }
-#topMenu a:last-child {
-    float: right;
-    padding: 10px;
-    color: #1F557E;
-    font-weight: bold;
-}
 
 #templates {
     background: #f6f6f6;

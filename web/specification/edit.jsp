@@ -85,7 +85,7 @@
                                     <div class="form-group">
 
                                         <label class="col-md-3 control-label">Your reference</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Type in personal reference</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span><stripes:text id="reference" class="form-control" name="specification.reference" onchange="updateGenPersonalREF()" tabindex="1"/>
@@ -97,7 +97,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Layers</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Select number of layers</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -115,7 +115,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Surface finish</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Select surface finish - Standard is "LF HASL"</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -132,7 +132,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Copper thickness</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Select copper thickness - Standard is 35 um</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -150,7 +150,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Min. hole diameter</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Select min. hole diameter - Standard is "0.5 mm."</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -168,7 +168,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Special options</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Please select "Special options" if you would like to define:  Other type of mask, Gold finger, Edge plating, Impedance or Pressfit requirements.</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -181,7 +181,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Comment</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-9 inputfield">
                                             <span class="help-block">Please feel free to make a comment regarding special requirements, stackup etc.</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -200,7 +200,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">
                                             PCB name</label>
-                                        <div class="col-md-9">  
+                                        <div class="col-md-9 inputfield">  
                                             <span class="help-block">Type PCB reference</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span><stripes:text id="pcbreference" class="form-control" name="specification.pcbreference" onchange="updateGenPcbREF()" tabindex="2" />
@@ -210,7 +210,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Material</label>
-                                        <div class="col-md-9">   
+                                        <div class="col-md-9 inputfield">   
                                             <span class="help-block">Select material - Standard is "FR4"</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -226,7 +226,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">PCB thickness</label>
-                                        <div class="col-md-9">     
+                                        <div class="col-md-9 inputfield">     
                                             <span class="help-block">Select "PCB thickness"</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -262,7 +262,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Color of soldermask</label>
-                                        <div class="col-md-9">    
+                                        <div class="col-md-9 inputfield">    
                                             <span class="help-block">Select soldermask color - Standard is "Green"</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -281,7 +281,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Min. track/gap</label>
-                                        <div class="col-md-9"> 
+                                        <div class="col-md-9 inputfield"> 
                                             <span class="help-block">Select min. track/gap - Standard is "0.2 mm."</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>

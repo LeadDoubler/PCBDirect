@@ -24,10 +24,11 @@
         </head>
         <body>
             <stripes:layout-component name="topMenu">
-                
+               
             </stripes:layout-component>
             <!-- START PAGE CONTAINER -->
             <div class="page-container">
+             
 
                 <!-- START PAGE SIDEBAR -->
                 <stripes:layout-component name="menubar">

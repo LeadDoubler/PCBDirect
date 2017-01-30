@@ -11,6 +11,34 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+.contenterror{
+    margin-bottom: 20px;
+    color:red;
+    position:relative;
+    
+}
+
+.inputfield{
+    margin-bottom:18px;
+}
+
+.loginlink{
+    font-weight:bold;
+}
+
+#pcbreferror{
+}
+.contactinfo{
+    background-color:white;
+    width:100%;
+}
+
+#et-info{
+    width:400px;
+    float:right;
+}
+
+
 root { 
     display: block;
 }

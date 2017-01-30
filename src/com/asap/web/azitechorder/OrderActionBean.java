@@ -185,7 +185,6 @@ public class OrderActionBean extends CatalogActionBean {
     public Resolution verify() {
         ValidationErrors error = new ValidationErrors();
         if (order == null) {
-
             error.addGlobalError(new SimpleError("Session Expired!"));
             getContext().setValidationErrors(error);
             return new ForwardResolution("/startup/Startup.action");
@@ -215,6 +214,7 @@ public class OrderActionBean extends CatalogActionBean {
                 return new ForwardResolution("view.jsp");
             }
         }
+        System.out.println(getHasFile() + " 1: " + getHasFile1());
         if (!getHasFile() && !getHasFile1()) {
             error.add("file", new SimpleError("Minimum one file upload is required"));
             getContext().setValidationErrors(error);
@@ -244,7 +244,6 @@ public class OrderActionBean extends CatalogActionBean {
         if (order.getStatus() == null) {
             order.setStatus("Order to be confirmed");
         }
-
         if (!getContext().getUser().getUsername().equals("admin")) //mail from useremailid to pcb-direct@azitech.dk; if normal user
         {
             Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Europe/Copenhagen"));
@@ -266,6 +265,7 @@ public class OrderActionBean extends CatalogActionBean {
             mail.setTo(this.getContext().getUser().getEmail()); //order.getSpecification().getUser().getEmail()
             mail.setFrom("pcb-direct@azitech.dk");
             mail.send();
+            System.out.println("Email.send ran");
         }
         order.setOrdercomments(comment);
         order.setPonumber(ponumber);
@@ -280,7 +280,7 @@ public class OrderActionBean extends CatalogActionBean {
             String lsQuoteID = order.getQuoteid();
             if (lsQuoteID != null && lsQuoteID.length() > 0 && order.getSpecification() != null) {
                 List list = HibernateUtil.getSessionFactory().getCurrentSession().createQuery("select count(*), quoteid from AzitechOrder a where specification.id='" + String.valueOf(order.getSpecification().getId()) + "' group by specification order by id").list();
-                if (list.get(0) != null) {
+                if (list != null && list.size() > 0 && list.get(0) != null) {
                     Object[] s = (Object[]) list.get(0);
                     if (s.length == 2 && s[1] != null && s[0] != null) {
                         lsQuoteID = s[1] + "-" + (Integer.parseInt(s[0].toString()));
@@ -289,12 +289,12 @@ public class OrderActionBean extends CatalogActionBean {
                 }
             }
         }
-
         persist(order);
         this.getContext().getRequest().getSession().setAttribute("order", order);
 
         if (!getContext().getUser().getUsername().equals("admin")) //mail from useremailid to pcb-direct@azitech.dk; if normal user
         {
+            System.out.println("Sending another email");
             AzitechOrderReceive emailR = new AzitechOrderReceive();
             emailR.setProperty("order", order);
             User user = this.getContext().getUser();
@@ -310,8 +310,9 @@ public class OrderActionBean extends CatalogActionBean {
             emailR.setFrom("pcb-direct@azitech.dk");
             emailR.setSubject("Order received");
             emailR.send();
+            System.out.println("Email sent.");
         }
-
+        System.out.println("returning receipt");
         return new ForwardResolution("receipt.jsp");
     }
 

@@ -9,13 +9,17 @@
     </stripes:layout-component>
 
     <stripes:layout-component name="topMenu">
+            <div class="contactinfo">
+                <div id="et-info">CVR: 29417717 | +45 6613 0768 | <a href="mailto:sales@azitech.dk">sales@azitech.dk</a> | <a onclick="$('#templates').hide(); $('#loginBox').fadeIn();" href="#/" class="loginlink">LOGIN</a></div>
+           
+            </div>
         <div id="topMenu">
-            <a href="${pageContext.request.contextPath}/startup/Startup.action?home"><img src="${pageContext.request.contextPath}/images/logo-trans-small.png"/></a>
-            <a onclick="$('#templates').hide(); $('#loginBox').fadeIn();" href="#/">LOGIN</a>
+                        <a href="${pageContext.request.contextPath}/startup/Startup.action?home"><img src="${pageContext.request.contextPath}/images/logo-trans-small.png"/></a>
         </div>
     </stripes:layout-component>
     <stripes:layout-component name="complete">
         <c:if test="${not empty pageContext.request.parameterMap.home}">
+
             <div id="templates">
                 <%@ include file="/productTemplate/productTemplatesHome.jsp"%>
             </div>

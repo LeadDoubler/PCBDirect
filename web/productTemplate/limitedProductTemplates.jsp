@@ -53,6 +53,7 @@
         display: inline-block;
         margin: 10px;
         background: #FBFBFB;
+        max-width: 300px;
     }
 
     .productTemplate:hover {
