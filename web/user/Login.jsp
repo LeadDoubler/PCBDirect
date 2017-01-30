@@ -10,13 +10,12 @@
 
     <stripes:layout-component name="topMenu">
         <div id="topMenu">
-            <a href="/azical/startup/Startup.action?home"><img src="/azical/images/logo-trans-small.png"/></a>
+            <a href="${pageContext.request.contextPath}/startup/Startup.action?home"><img src="${pageContext.request.contextPath}/images/logo-trans-small.png"/></a>
             <a onclick="$('#templates').hide(); $('#loginBox').fadeIn();" href="#/">LOGIN</a>
         </div>
     </stripes:layout-component>
     <stripes:layout-component name="complete">
-        <c:if test="${not empty pageContext.request.parameterMap.get('home')}">
-
+        <c:if test="${not empty pageContext.request.parameterMap.home}">
             <div id="templates">
                 <%@ include file="/productTemplate/productTemplatesHome.jsp"%>
             </div>
