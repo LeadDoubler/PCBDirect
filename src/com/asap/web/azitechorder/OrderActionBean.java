@@ -244,29 +244,7 @@ public class OrderActionBean extends CatalogActionBean {
         if (order.getStatus() == null) {
             order.setStatus("Order to be confirmed");
         }
-        if (!getContext().getUser().getUsername().equals("admin")) //mail from useremailid to pcb-direct@azitech.dk; if normal user
-        {
-            Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Europe/Copenhagen"));
-            order.setDate(c.getTime());
-            AzitechOrderEmail email = new AzitechOrderEmail();
-            email.setProperty("order", order);
-            email.setProperty("specification", order.getSpecification());
-            email.setTo(ConfigurationManager.getParameter("email"));
-            email.setFrom("pcb-direct@azitech.dk");
-            email.setSubject("Order");
-            email.send();
-        } else if (order.getStatus().equals("Order confirmed")) //If user is admin; mail is sent to user from pcb-direct@azitech.dk
-        {
-            Email mail = new Email();
-            mail.setTemplateName("Receipt");
-            mail.setSubject("Order confirmation from PCB-direct");
-            mail.setProperty("order", order);
-            mail.setProperty("specification", order.getSpecification());
-            mail.setTo(this.getContext().getUser().getEmail()); //order.getSpecification().getUser().getEmail()
-            mail.setFrom("pcb-direct@azitech.dk");
-            mail.send();
-            System.out.println("Email.send ran");
-        }
+
         order.setOrdercomments(comment);
         order.setPonumber(ponumber);
         order.setStreet(street);
@@ -291,6 +269,32 @@ public class OrderActionBean extends CatalogActionBean {
         }
         persist(order);
         this.getContext().getRequest().getSession().setAttribute("order", order);
+
+        if (!getContext().getUser().getUsername().equals("admin")) //mail from useremailid to pcb-direct@azitech.dk; if normal user
+        {
+            Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Europe/Copenhagen"));
+            order.setDate(c.getTime());
+            AzitechOrderEmail email = new AzitechOrderEmail();
+            email.setProperty("order", order);
+            email.setProperty("specification", order.getSpecification());
+            email.setTo("pcb-direct@azitech.dk");
+            email.setFrom("pcb-direct@azitech.dk");
+            email.setSubject("Order");
+            email.send();
+            System.out.println("Sending email to: " + email.getTo());
+            System.out.println(email.getContent());
+        } else if (order.getStatus().equals("Order confirmed")) //If user is admin; mail is sent to user from pcb-direct@azitech.dk
+        {
+            Email mail = new Email();
+            mail.setTemplateName("Receipt");
+            mail.setSubject("Order confirmation from PCB-direct");
+            mail.setProperty("order", order);
+            mail.setProperty("specification", order.getSpecification());
+            mail.setTo(this.getContext().getUser().getEmail()); //order.getSpecification().getUser().getEmail()
+            mail.setFrom("pcb-direct@azitech.dk");
+            mail.send();
+            System.out.println("Email.send ran");
+        }
 
         if (!getContext().getUser().getUsername().equals("admin")) //mail from useremailid to pcb-direct@azitech.dk; if normal user
         {
