@@ -10,9 +10,10 @@
         <br/>
 
         <%@ include file="/productTemplate/productTemplatesHome.jsp"%>
-        <script>
-
-        </script>
     </stripes:layout-component> 
 </stripes:layout-render>
-
+<script>
+    $(function () {
+        sortTemplates("name");
+    });
+</script>

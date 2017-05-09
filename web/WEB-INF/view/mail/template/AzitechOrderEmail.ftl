@@ -3,7 +3,7 @@
 <h2>Order from: <font style="color:red; font-weight: bold;"><b>${order.username}</b></font></h2>
 <br/>
 <table border="0" cellpadding="0" cellspacing="0">
-    <tr><td colspan="3">A new order has been registered on PCB-direct. <a href="http://pcb-direct.dk">(Click to see)</a></td></tr>
+    <tr><td colspan="3">A new order has been registered on PCB-direct. <a href="http://pcb-direct.dk/azitechorder/Order.action?viewReceipt&order=${order.id}">(Click to see)</a></td></tr>
 	<tr><td height="16" colspan="3"></td></tr>
 	<tr>
         <td>

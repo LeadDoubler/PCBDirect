@@ -6,17 +6,17 @@
     <td valign="top">
         <span class="title">PCB Dimension :</span><br/>
         <span class="form_right">
-             <stripes:text id="pcbdimx" class="textwidthadjust" name="specification.azpcbdimx" onchange="if(!danishDecimalCheck(this))this.value=0;updateDim();"/><img class="info" src="../images/info.png" onmouseover="showToolTip(this,'Type PCB dimension in mm');" onmouseout="hideToolTip();"/>
-             <br/><span class="content10px" style="white-space:nowrap;">mm(X-direction)</span><br/>
-             <span id="xdimerror" class="contenterror"></span>
+            <stripes:text id="pcbdimx" class="textwidthadjust" name="specification.azpcbdimx" onchange="if(!danishDecimalCheck(this))this.value=0;updateDim();"/><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Type PCB dimension in mm');" onmouseout="hideToolTip();"/>
+            <br/><span class="content10px" style="white-space:nowrap;">mm(X-direction)</span><br/>
+            <span id="xdimerror" class="contenterror"></span>
         </span>
     </td>
     <td valign="top">
         <span class="title">PCB Dimension :</span><br/>
         <span class="form_right">
-             <stripes:text id="pcbdimy" class="textwidthadjust" name="specification.azpcbdimy" onchange="if(!danishDecimalCheck(this))this.value=0;updateDim();"/><img class="info" src="../images/info.png" onmouseover="showToolTip(this,'Type PCB dimension in mm');" onmouseout="hideToolTip();"/>
-             <br/><span class="content10px" style="white-space:nowrap;">mm(Y-direction)</span><br/>
-             <span id="ydimerror" class="contenterror"></span>
+            <stripes:text id="pcbdimy" class="textwidthadjust" name="specification.azpcbdimy" onchange="if(!danishDecimalCheck(this))this.value=0;updateDim();"/><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Type PCB dimension in mm');" onmouseout="hideToolTip();"/>
+            <br/><span class="content10px" style="white-space:nowrap;">mm(Y-direction)</span><br/>
+            <span id="ydimerror" class="contenterror"></span>
         </span>
     </td>
 </tr>
@@ -29,7 +29,7 @@
                 <c:forEach var="i" begin="1" end="20" step="1">
                     <stripes:option value="${i}" label="${i}"/>
                 </c:forEach>
-            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this,'Numbers of PCB\'s (x-direction)');" onmouseout="hideToolTip();"/>
+            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Numbers of PCB\'s (x-direction)');" onmouseout="hideToolTip();"/>
             <br/><span class="content10px" style="white-space:nowrap;">pcs.(X-direction)</span><br/>
             <span id="xtotalerror" class="contenterror"></span>
         </span>
@@ -41,7 +41,7 @@
                 <c:forEach var="j" begin="1" end="20" step="1">
                     <stripes:option value="${j}" label="${j}"/>
                 </c:forEach>
-            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this,'Numbers of PCB\'s (y-direction)');" onmouseout="hideToolTip();"/>
+            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Numbers of PCB\'s (y-direction)');" onmouseout="hideToolTip();"/>
             <br/><span class="content10px" style="white-space:nowrap;">pcs.(Y-direction)</span><br/>
             <span id="ytotalerror" class="contenterror"></span>
         </span>
@@ -56,7 +56,7 @@
                 <stripes:option value="0" label="0"/>
                 <stripes:option value="2,4" label="2.4"/>
                 <stripes:option value="10" label="10"/>
-            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this,'Select distance between PCBs');" onmouseout="hideToolTip();"/><span class="content10px">mm</span>
+            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Select distance between PCBs');" onmouseout="hideToolTip();"/><span class="content10px">mm</span>
         </span>
     </td>
     <td valign="top">
@@ -67,7 +67,7 @@
                 <stripes:option value="13" label="13"/>
                 <stripes:option value="10" label="10"/>
                 <stripes:option value="7,4" label="7.4"/>
-            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this,'Select size of panel border')" onmouseout="hideToolTip()"/>
+            </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Select size of panel border')" onmouseout="hideToolTip()"/>
             <span class="content10px">mm</span>
         </span>
     </td>
@@ -104,6 +104,14 @@
     <td colspan="2"><cat:sheet x="62" y="18"/></td>
 </tr>
 
+<script>
+
+    (function () {
+        updateDim();
+    })();
+
+</script>
+
 <%--<script type="text/javascript">
     updateDim();
 </script>--%>
@@ -128,11 +136,11 @@
     </span>
 </div>--%>
 
-    <!--<br/><br/>-->
-    
+<!--<br/><br/>-->
 
-    <!--<div>-->
 
-        <%--<cat:part part="specification.comment" site="yes"/>--%>
-        
-        <!--</div>-->
+<!--<div>-->
+
+<%--<cat:part part="specification.comment" site="yes"/>--%>
+
+<!--</div>-->

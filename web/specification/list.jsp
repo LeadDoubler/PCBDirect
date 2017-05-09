@@ -23,8 +23,9 @@
                             <td><cat:str value="${spec.reference}" length="25"/></td>
                             <td><cat:str value="${spec.pcbreference}" length="15"/></td>
                             <td><fmt:formatNumber value="${spec.layers}" maxFractionDigits="0"/></td>
-                            <c:if test="${actionBean.context.user.role.value == 5}"><td align="right"><input type="button" value="Save as template" class="btn btn-primary"/></td></c:if>
-                            </tr>
+                            <c:if test="${actionBean.context.user.role.value == 5}"><td align="right"><c:if test="${empty spec.productTemplates && empty spec.azitechOrders && spec.isorderplaced != 'Y'}"><a class="btn btn-danger" onclick="if (!confirm('Are you sure you want to delete this specification?'))
+                                        return false;" href="${pageContext.request.contextPath}/specification/Specification.action?deleteFromAdmin&specification=${spec.id}">Delete specification</a> </c:if> <input type="button" value="Save as template" class="btn btn-primary"/></td></c:if>
+                                </tr>
                     </c:forEach>
                 </tbody>
             </table>
@@ -35,6 +36,8 @@
                 var url;
                 if (event.target.nodeName == "INPUT") {
                     url = '${pageContext.request.contextPath}/productTemplate/ProductTemplate.action?showProductTemplate&specification=' + id;
+                } else if (event.target.nodeName == "A") {
+                    return;
                 } else {
                     url = '${pageContext.request.contextPath}/specification/Specification.action?specification=' + id;
                 }

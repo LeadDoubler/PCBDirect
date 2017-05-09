@@ -101,7 +101,9 @@ public class OrderActionBean extends CatalogActionBean {
         order.setCopperthickness(qoute.getSpecification().getCopperthickness());
         order.setPcbthickness(qoute.getSpecification().getPcbthickness());
         order.setMinholedia(qoute.getSpecification().getMinholedia());
-        order.setMintrackgap(qoute.getSpecification().getMintrackgap());
+        //Inserting "0" in front of value, because excel uses whole numbers instead of decimal
+        order.setMintrackgap(Double.parseDouble("0." + qoute.getSpecification().getMintrackgap().intValue()));
+        System.out.println("mintrackgap set to: " + order.getMintrackgap());
         order.setColorsoldermask(qoute.getSpecification().getColorsoldermask());
         order.setOthermask(qoute.getSpecification().getOthermask());
         order.setGoldfinger(qoute.getSpecification().getGoldfinger());

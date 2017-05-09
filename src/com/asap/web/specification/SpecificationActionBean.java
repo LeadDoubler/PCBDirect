@@ -6,7 +6,6 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-
 package com.asap.web.specification;
 
 import com.asap.catalog.dao.Qoute;
@@ -27,11 +26,13 @@ import util.HibernateUtil;
  * @author JRO
  */
 public class SpecificationActionBean extends CatalogActionBean {
+
     public static final String filename = "/scheme.xls";
+    private Boolean fromTemplate;
 
     @ValidateNestedProperties({
-            @Validate(field = "reference", required = true),
-            @Validate(field = "pcbreference", required = true)
+        @Validate(field = "reference", required = true),
+        @Validate(field = "pcbreference", required = true)
     })
 
     private Specification specification;
@@ -50,11 +51,11 @@ public class SpecificationActionBean extends CatalogActionBean {
         showspec = specification;
         Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Asia/Calcutta"));
         System.out.println(new Date());
-        System.out.println("Time in Calcutta: " +
-                c.get(Calendar.HOUR_OF_DAY) + ":" +
-                c.get(Calendar.MINUTE));
+        System.out.println("Time in Calcutta: "
+                + c.get(Calendar.HOUR_OF_DAY) + ":"
+                + c.get(Calendar.MINUTE));
 
-         Calendar calNewYork = Calendar.getInstance();
+        Calendar calNewYork = Calendar.getInstance();
         Calendar calParis = Calendar.getInstance();
         Calendar calTokyo = Calendar.getInstance();
 
@@ -62,18 +63,18 @@ public class SpecificationActionBean extends CatalogActionBean {
         calParis.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen"));
         calTokyo.setTimeZone(TimeZone.getTimeZone("Asia/Tokyo"));
 
-        System.out.println("Time in CET: " +
-                calNewYork.get(Calendar.HOUR_OF_DAY) + ":" +
-                calNewYork.get(Calendar.MINUTE));
+        System.out.println("Time in CET: "
+                + calNewYork.get(Calendar.HOUR_OF_DAY) + ":"
+                + calNewYork.get(Calendar.MINUTE));
 
-        System.out.println("Time in Copenhagen: " +
-                calParis.get(Calendar.HOUR_OF_DAY) + ":" +
-                calParis.get(Calendar.MINUTE));
+        System.out.println("Time in Copenhagen: "
+                + calParis.get(Calendar.HOUR_OF_DAY) + ":"
+                + calParis.get(Calendar.MINUTE));
 
-        System.out.println("Time in Tokyo: " +
-                calTokyo.get(Calendar.HOUR_OF_DAY) + ":" +
-                calTokyo.get(Calendar.MINUTE));
-        
+        System.out.println("Time in Tokyo: "
+                + calTokyo.get(Calendar.HOUR_OF_DAY) + ":"
+                + calTokyo.get(Calendar.MINUTE));
+
         if (specification == null) {
             specification = new Specification();
             specification.init(getContext().getServletContext().getRealPath(filename));
@@ -89,16 +90,18 @@ public class SpecificationActionBean extends CatalogActionBean {
 
     @DontValidate
     public Resolution viewAndOrder() {
-        if (specification == null)
+        if (specification == null) {
             return new RedirectResolution("/startup/Startup.action?home");
+        }
         specification.setSpecAccess(1);
         return new ForwardResolution("view&orderSpec.jsp");
     }
 
     @DontValidate
     public Resolution viewOnly() {
-        if (specification == null)
+        if (specification == null) {
             return new RedirectResolution("/startup/Startup.action?home");
+        }
         specification.setSpecAccess(2);
         return new ForwardResolution("roSpec.jsp");
     }
@@ -211,17 +214,35 @@ public class SpecificationActionBean extends CatalogActionBean {
 
     @DontValidate
     public Resolution delete() {
-        getContext().getRequest().getSession().setAttribute("user", specification.getUser());
-        List<Specification_Share> list = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Specification_Share.class).add(Restrictions.eq("spec", specification)).list();
-        for (Specification_Share obj : list) {
-            delete(obj);
+        if (specification != null && specification.getProductTemplates().size() == 0) {
+            getContext().getRequest().getSession().setAttribute("user", specification.getUser());
+            List<Specification_Share> list = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Specification_Share.class).add(Restrictions.eq("spec", specification)).list();
+            for (Specification_Share obj : list) {
+                delete(obj);
+            }
+            List quoteList = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Qoute.class).add(Restrictions.eq("specification", specification)).list();
+            for (Object qoute : quoteList) {
+                delete(qoute);
+            }
+            delete(specification);
         }
-        List quoteList = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Qoute.class).add(Restrictions.eq("specification", specification)).list();
-        for (Object qoute : quoteList) {
-            delete(qoute);
-        }
-        delete(specification);
         return new ForwardResolution("/user/UserLoggedIn.jsp");
+    }
+
+    @DontValidate
+    public Resolution deleteFromAdmin() {
+        if (specification != null && specification.getProductTemplates().size() == 0) {
+            List<Specification_Share> list = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Specification_Share.class).add(Restrictions.eq("spec", specification)).list();
+            for (Specification_Share obj : list) {
+                delete(obj);
+            }
+            List quoteList = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Qoute.class).add(Restrictions.eq("specification", specification)).list();
+            for (Object qoute : quoteList) {
+                delete(qoute);
+            }
+            delete(specification);
+        }
+        return list();
     }
 
     public static String getFilename() {
@@ -257,5 +278,19 @@ public class SpecificationActionBean extends CatalogActionBean {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    /**
+     * @return the fromTemplate
+     */
+    public Boolean getFromTemplate() {
+        return fromTemplate;
+    }
+
+    /**
+     * @param fromTemplate the fromTemplate to set
+     */
+    public void setFromTemplate(Boolean fromTemplate) {
+        this.fromTemplate = fromTemplate;
     }
 }

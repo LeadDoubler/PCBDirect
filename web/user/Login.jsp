@@ -9,20 +9,48 @@
     </stripes:layout-component>
 
     <stripes:layout-component name="topMenu">
-            <div class="contactinfo">
-                <div id="et-info">CVR: 29417717 | +45 6613 0768 | <a href="mailto:sales@azitech.dk">sales@azitech.dk</a> | <a onclick="$('#templates').hide(); $('#loginBox').fadeIn();" href="#/" class="loginlink">LOGIN</a></div>
-           
-            </div>
+        <div class="contactinfo">
+            <div id="et-info">CVR: 29417717 | +45 6613 0768 | <a href="mailto:sales@azitech.dk">sales@azitech.dk</a> | <a onclick="$('#templatesBox').hide(); $('#loginBox').fadeIn();" href="#/" class="loginlink">LOGIN</a></div>
+
+        </div>
         <div id="topMenu">
-                        <a href="${pageContext.request.contextPath}/startup/Startup.action?home"><img src="${pageContext.request.contextPath}/images/logo-trans-small.png"/></a>
+            <a href="${pageContext.request.contextPath}/startup/Startup.action?home"><img src="${pageContext.request.contextPath}/images/logo-trans-small.png"/></a>
         </div>
     </stripes:layout-component>
     <stripes:layout-component name="complete">
         <c:if test="${not empty pageContext.request.parameterMap.home}">
-
-            <div id="templates">
-                <%@ include file="/productTemplate/productTemplatesHome.jsp"%>
+            <div id="templatesBox">
+                <div id="templates">
+                    <%@ include file="/productTemplate/productTemplatesHome.jsp"%>
+                </div>
             </div>
+            <script>
+
+
+                function sortTemplates(type) {
+
+                    var sortedList = "";
+
+                    if (type == "price") {
+                        sortedList = $('#templates .productTemplate').sort(function (a, b) {
+                            var contentA = parseInt($(a).find(".templatePrice").text().replace("DKK", "").replace(".", ""));
+                            var contentB = parseInt($(b).find(".templatePrice").text().replace("DKK", "").replace(".", ""));
+                            return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+                        });
+                    }
+
+                    if (type == "name") {
+                        sortedList = $('#templates .productTemplate').sort(function (a, b) {
+                            var contentA = $(a).find(".templateName").text().toLowerCase();
+                            var contentB = $(b).find(".templateName").text().toLowerCase();
+                            return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+                        });
+                    }
+
+                    $('#templates').append(sortedList);
+
+                }
+            </script>
             <style>
                 #loginBox {
                     display: none;
@@ -143,3 +171,8 @@
         </div>
     </stripes:layout-component>
 </stripes:layout-render>
+<script>
+    $(function () {
+        sortTemplates("name");
+    });
+</script>

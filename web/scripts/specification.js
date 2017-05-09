@@ -14,7 +14,7 @@ $(document).ready(function(){
    if ($('#standardorspecial').val() == 'special'){
        $('#special').show();
    }
-   if ($('#panelchoice').val() == 'Azitech'){
+   if ($('#panelchoice').val() == 'New panel'){
        $('#azitech').show();
    }
 });

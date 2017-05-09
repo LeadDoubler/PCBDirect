@@ -6,7 +6,6 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-
 package com.asap.catalog.dao;
 
 import com.jxcell.CellException;
@@ -19,6 +18,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import jxcell.Position;
 
@@ -147,6 +147,8 @@ public class Specification extends Component {
     private Date lastUpdateOn;
     @OneToMany(mappedBy = "specification")
     private List<ProductTemplate> productTemplates;
+    @OneToMany(mappedBy = "specification")
+    private List<AzitechOrder> azitechOrders;
 
     public Specification() {
 
@@ -158,7 +160,8 @@ public class Specification extends Component {
     }
 
     /**
-     * Initialize the Specification by fetching default values from the spreadsheet
+     * Initialize the Specification by fetching default values from the
+     * spreadsheet
      *
      * @param file
      */
@@ -242,7 +245,8 @@ public class Specification extends Component {
     }
 
     /**
-     * A function to process the data from page/form and put it into the spreadsheet, fetch the result values from new processed spreadsheet.
+     * A function to process the data from page/form and put it into the
+     * spreadsheet, fetch the result values from new processed spreadsheet.
      *
      * @param file
      */
@@ -320,19 +324,7 @@ public class Specification extends Component {
         jx.setString(JxcellPosition.CURRENCY, user.getCurrency());
         jx.setString(JxcellPosition.DISCOUNT, String.valueOf(user.getDiscount().doubleValue()) + "%");
         try {
-            System.out.println("priceperunit = "+jx.getNumber(JxcellPosition.RESPRICEPERUNIT));
-            System.out.println("Layers = "+jx.getNumber(JxcellPosition.NOOFLAYERS));
-            System.out.println("PricePerPiece = "+jx.getNumber(new Position(8, 8)));
-            for (int i = 0 ; i<40;i++){
-                for (int j = 0 ; j < 40 ; j++){
-                    System.out.print(jx.getString(new Position(i,j))+"|");
-                }
-                System.out.print("\n");
-            }
-
             jx.getView().recalc();
-            System.out.println("Sheet is recalculated");
-            System.out.println("priceperunit = "+jx.getNumber(JxcellPosition.RESPRICEPERUNIT));
         } catch (CellException ex) {
             Logger.getLogger(Specification.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -356,12 +348,13 @@ public class Specification extends Component {
         resweight = jx.getNumber(JxcellPosition.RESWEIGHT);
 
         resarea = jx.getNumber(JxcellPosition.RESAREA);
-        if (rescurrency.equals("USD"))
+        if (rescurrency.equals("USD")) {
             exchngrate = String.valueOf(jx.getNumber(JxcellPosition.EXCHANGERATE_USD));
-        else if (rescurrency.equals("EURO"))
+        } else if (rescurrency.equals("EURO")) {
             exchngrate = String.valueOf(jx.getNumber(JxcellPosition.EXCHANGERATE_EURO));
-        else
+        } else {
             exchngrate = String.valueOf(jx.getNumber(JxcellPosition.EXCHANGERATE_USD));
+        }
 
         System.gc();
     }
@@ -928,8 +921,7 @@ public class Specification extends Component {
             User user = new User();
             //user.setId(lastUpdateBy);
             return ((User) HibernateUtil.getSessionFactory().getCurrentSession().get(User.class, lastUpdateBy)).getFirstName() + ", " + formatDate(lastUpdateOn);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return formatDate(lastUpdateOn);
         }
     }
@@ -952,5 +944,36 @@ public class Specification extends Component {
 
     public void setShareToCount(String shareToCount) {
         this.shareToCount = shareToCount;
+    }
+
+    /**
+     * @return the productTemplates
+     */
+    public List<ProductTemplate> getProductTemplates() {
+        if (productTemplates == null) {
+            productTemplates = new ArrayList<ProductTemplate>();
+        }
+        return productTemplates;
+    }
+
+    /**
+     * @param productTemplates the productTemplates to set
+     */
+    public void setProductTemplates(List<ProductTemplate> productTemplates) {
+        this.productTemplates = productTemplates;
+    }
+
+    /**
+     * @return the azitechOrders
+     */
+    public List<AzitechOrder> getAzitechOrders() {
+        return azitechOrders;
+    }
+
+    /**
+     * @param azitechOrders the azitechOrders to set
+     */
+    public void setAzitechOrders(List<AzitechOrder> azitechOrders) {
+        this.azitechOrders = azitechOrders;
     }
 }

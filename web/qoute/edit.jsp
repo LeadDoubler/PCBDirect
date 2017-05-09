@@ -59,8 +59,6 @@
                                                                             <span class="form_right">
                                                                                 <select name="transport">
                                                                                     <option value="Express" selected="selected">Express</option>
-                                                                                    <option value="Economy">Economy</option>
-                                                                                    <option value="By Ship">By Ship</option>
                                                                                 </select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, '<u>Economy</u>: Economy 5 working days.<br/><br/><u>Express</u>: Express 3 working days.<br/><br/><u>By Ship</u>: By ship 30 working days, large cargo.<br/><br/>* Delivery in Sweden, one aditional working day will be added.<br/>* Delivery in Norway, three aditional working day will be added.');" onmouseout="hideToolTip();"/>
                                                                             </span>
                                                                         </td>

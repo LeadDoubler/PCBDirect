@@ -41,9 +41,8 @@
                     <stripes:hidden id="specHeight" name="height"></stripes:hidden>
                     <stripes:hidden id="specQuantity" name="quantity"></stripes:hidden>
                     <stripes:hidden id="specUnitPrice" name="unitPrice"></stripes:hidden>
-                    <stripes:submit name="makeQuote" class="btn btn-success">Buy specification</stripes:submit>
+                    <stripes:submit name="buyTemplate" class="btn btn-success">Buy specification</stripes:submit>
             </stripes:form>
-            <a href="${pageContext.request.contextPath}/specification/Specification.action?specification=${actionBean.productTemplate.specification}" style="margin-left: 10px;">Create your own</a>
         </div>
 
         <style>
@@ -80,7 +79,7 @@
                     var m2 = (width * length) / 10000 / 100;
 
                     var units = parseInt(total / m2);
-                    var unitPrice = parseInt((price / units) * 100) / 100;
+                    var unitPrice = (Math.round((price / units) * 100) / 100).toString().replace(".", ",");
 
                     $('#units').text(units);
                     $('#unitPrice').text(unitPrice);

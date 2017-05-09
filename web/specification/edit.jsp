@@ -87,8 +87,9 @@
                                         <label class="col-md-3 control-label">Your reference</label>
                                         <div class="col-md-9 inputfield">
                                             <span class="help-block">Type in personal reference</span>
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span><stripes:text id="reference" class="form-control" name="specification.reference" onchange="updateGenPersonalREF()" tabindex="1"/>
+                                            <c:if test="${actionBean.fromTemplate}"><c:set var="disabled" value="true"></c:set></c:if>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span><stripes:text id="reference" class="form-control" name="specification.reference" onchange="updateGenPersonalREF()" tabindex="1" readonly="${disabled}"/>
                                             </div>
                                             <span id="referror" style="display:none;" class="contenterror">Please enter personal reference</span>
 
@@ -125,7 +126,7 @@
                                                         <stripes:option selected="selected" value="LF HASL" label="LF HASL"/>
                                                         <stripes:option value="Immersion Tin" label="Immersion Tin"/>
                                                         <stripes:option value="Immersion Silver" label="Immersion Silver"/>
-                                                        <stripes:option value="Ni/Au (Gold 1-3u)" label="Ni/Au (Gold 1-3u)"/>
+                                                        <stripes:option value="ENIG" label="ENIG"/>
                                                     </stripes:select></div>
                                         </div>
                                     </div>
@@ -204,7 +205,6 @@
                                             <span class="help-block">Type PCB reference</span>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span><stripes:text id="pcbreference" class="form-control" name="specification.pcbreference" onchange="updateGenPcbREF()" tabindex="2" />
-
                                             </div>
                                             <span id="pcbreferror" style="display:none;" class="contenterror">Please enter PCB reference</span>  </div>
                                     </div>
@@ -286,11 +286,11 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                                     <stripes:select class="form-control" name="specification.mintrackgap">
-                                                        <stripes:option value="0,2" label=">=0.2 mm"/>
-                                                        <stripes:option value="0,175" label="0.175 mm"/>
-                                                        <stripes:option value="0,15" label="0.15 mm"/>
-                                                        <stripes:option value="0,125" label="0.125 mm"/>
-                                                        <stripes:option value="0,1" label="0.10 mm"/>
+                                                        <stripes:option value="2" label=">=0.2 mm"/>
+                                                        <stripes:option value="175" label="0.175 mm"/>
+                                                        <stripes:option value="15" label="0.15 mm"/>
+                                                        <stripes:option value="125" label="0.125 mm"/>
+                                                        <stripes:option value="1" label="0.10 mm"/>
                                                     </stripes:select></div>
                                         </div>
                                     </div>

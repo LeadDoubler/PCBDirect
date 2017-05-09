@@ -219,13 +219,13 @@ public class QouteActionBean extends CatalogActionBean {
         priceprunit = specification.getRespriceperunit();
         tooling = specification.getRestestandtooling();
         freight = specification.getResfreightcost();
-        subtotal = priceprunit * quantity;
-
+        subtotal = priceprunit * quantity;     
+        
         total = specification.getRestotal();
         days = specification.getRestotaldays();
         weight = specification.getResweight();
-
-        if (qoute == null) {
+        
+         if (qoute == null) {
             qoute = new Qoute();
         }
 
@@ -248,7 +248,7 @@ public class QouteActionBean extends CatalogActionBean {
         specification.setAzproddays(apd);
 
         getContext().getRequest().getSession().setAttribute("qoute", qoute);
-
+        
         return new ForwardResolution("result.jsp");
     }
 

@@ -70,6 +70,7 @@ public class ProductTemplateActionBean extends CatalogActionBean {
         return new ForwardResolution("orderProduct.jsp");
     }
 
+    /*
     public Resolution makeQuote() {
         Specification newSpecification = new Specification();
         Qoute quote = new Qoute();
@@ -77,7 +78,9 @@ public class ProductTemplateActionBean extends CatalogActionBean {
             BeanUtils.copyProperties(newSpecification, getProductTemplate().getSpecification());
 
             System.out.println("Old spec: " + getProductTemplate().getSpecification());
-
+            System.out.println("Removing references to collection..");
+            newSpecification.setProductTemplates(null);
+            newSpecification.setAzitechOrders(null);
             newSpecification.setId(null);
             newSpecification.setSgpcbdimx(getWidth());
             newSpecification.setSgpcbdimy(getHeight());
@@ -88,7 +91,6 @@ public class ProductTemplateActionBean extends CatalogActionBean {
             newSpecification.setGerberdata(null);
             newSpecification.setGerberdata1(null);
             persist(newSpecification);
-
             System.out.println("New spec: " + newSpecification);
 
             quote.setSpecification(newSpecification);
@@ -109,6 +111,41 @@ public class ProductTemplateActionBean extends CatalogActionBean {
             ex.printStackTrace();
         }
         return new RedirectResolution("/qoute/Qoute.action?setUploads&specification=" + newSpecification + "&qoute=" + quote + "&goBack=false");
+    }
+     */
+    public Resolution buyTemplate() {
+        System.out.println("Buying new template..");
+        Specification newSpecification = new Specification();
+        try {
+            BeanUtils.copyProperties(newSpecification, getProductTemplate().getSpecification());
+
+            System.out.println("Creating copy of specification");
+            newSpecification.setProductTemplates(null);
+            newSpecification.setAzitechOrders(null);
+            newSpecification.setId(null);
+            newSpecification.setPcbreference("");
+            newSpecification.setSgpcbdimx(getWidth());
+            newSpecification.setAzpcbdimx(getWidth());
+            newSpecification.setOwnpaneldimx(getWidth());
+            newSpecification.setSgpcbdimy(getHeight());
+            newSpecification.setAzpcbdimy(getHeight());
+            newSpecification.setOwnpaneldimy(getHeight());
+            newSpecification.setUser(this.getContext().getUser());
+            newSpecification.setTransport(getProductTemplate().getTransport());
+            newSpecification.setResquantity(getQuantity());
+            newSpecification.setResworkingdays(getProductTemplate().getProductionDays());
+            newSpecification.setLayout("Single");
+            newSpecification.setGerberdata(null);
+            newSpecification.setGerberdata1(null);
+            persist(newSpecification);
+            System.out.println("New spec: " + newSpecification);
+        } catch (IllegalAccessException ex) {
+            ex.printStackTrace();
+        } catch (InvocationTargetException ex) {
+            ex.printStackTrace();
+        }
+        return new RedirectResolution("/specification/Specification.action?specification=" + newSpecification + "&fromTemplate=true");
+        //return new RedirectResolution("/qoute/Qoute.action?setUploads&specification=" + newSpecification + "&qoute=" + quote + "&goBack=false");
     }
 
     public Resolution saveProductTemplate() {
@@ -137,6 +174,14 @@ public class ProductTemplateActionBean extends CatalogActionBean {
 
         persist(getProductTemplate());
         return showProductTemplates();
+    }
+
+    public Resolution deleteProductTemplate() {
+        if (getProductTemplate() != null) {
+            HibernateUtil.getSessionFactory().getCurrentSession().delete(getProductTemplate());
+            persist();
+        }
+        return new RedirectResolution("/productTemplate/ProductTemplate.action");
     }
 
     public List<ProductTemplate> getProductTemplates() {
