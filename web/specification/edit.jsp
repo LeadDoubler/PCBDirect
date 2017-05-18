@@ -45,20 +45,85 @@
                         lsBlockLayout = "display:block;";
                     }
                 %>
-                <a class="btn btn-default pull-right" id="topnext" onclick="updateGeneralspe();
-                        if (!iserrorGeneralSpec) {
-                            $('#referencepart').hide();
-                            $('#link_ct2').addClass('current');
-                            $('#link_ct1').removeClass('current');
-                            $('#topnext').hide();
-                            $('#layouttopnext').show();
-                            $('#ct2').show();
-                            return false;
-                        } else {
-                        }" href="#ct2">Next</a>
-                <a style="display:none;" id="layouttopnext" class="btn btn-default pull-right" onclick="if (!iserror && !iserrorOwnpanel && !isSingleError) {
-                            saveAndCreateQuote();
-                        }">Next</a>
+
+
+                <div id="specMenu" class="row">
+                    <div class="col-sm-1 col-xs-1">
+                        <div class="specMenuItem selected">
+                            <div>1</div>
+                            <div>PCB specification</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <hr>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <div class="specMenuItem">
+                            <div>2</div>
+                            <div>Layout</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <hr>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <div class="specMenuItem">
+                            <div>3</div>
+                            <div>Calculate price</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <hr>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <div class="specMenuItem">
+                            <div>4</div>
+                            <div>Upload</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <hr>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <div class="specMenuItem">
+                            <div>5</div>
+                            <div>Verify PCB</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <hr>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <div class="specMenuItem">
+                            <div>6</div>
+                            <div>Order & delivery</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-1">
+                        <div style="margin-top: 45px;" class="specMenuItem">
+                            <a class="btn btn-default pull-right" id="topnext" onclick="updateGeneralspe();
+                                    if (!iserrorGeneralSpec) {
+                                        $('#referencepart').hide();
+                                        /*
+                                         $('#link_ct2').addClass('current');
+                                         $('#link_ct1').removeClass('current');
+                                         */
+                                        $('#specMenu .selected').removeClass('selected');
+                                        $('#specMenu > div:nth-child(3) .specMenuItem').addClass('selected');
+
+                                        $('#topnext').hide();
+                                        $('#layouttopnext').show();
+                                        $('#ct2').show();
+                                        return false;
+                                    } else {
+                                    }" href="#ct2">Next</a>
+                            <a style="display:none;" id="layouttopnext" class="btn btn-default pull-right" onclick="if (!iserror && !iserrorOwnpanel && !isSingleError) {
+                                        saveAndCreateQuote();
+                                    }">Next</a>
+                        </div>
+                    </div>
+
+                </div>
 
                 <div id="ddtabs4" class="ddcolortabs">
                     <ul>
@@ -373,6 +438,34 @@
             <%--<a class="form-control" name="end"/>--%>
         </stripes:form>
         <style>
+            #ddtabs4 {
+                display: none;
+            }
+            
+            #specMenu hr {
+                border-color: #dbdbdb;
+            }
+
+            #specMenu {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .specMenuItem > div:first-child{
+                border-radius: 100%;
+                background: #DBDBDB;
+                width: 50px;
+                height: 50px;
+                line-height: 48px;
+                font-weight: bold;
+                font-size: 1.2em;
+                margin: 0 auto 10px;
+                color: white;
+            }
+
+            .specMenuItem.selected > div:first-child {
+                background: #4F9FEA;
+            }
+
             @media screen and (max-width: 800px) {
                 #spaceFiller img {
                     display: none;

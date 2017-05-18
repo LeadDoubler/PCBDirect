@@ -15,26 +15,105 @@
 
         </script>
 
+        <style>
+            #specMenu hr {
+                border-color: #dbdbdb;
+            }
+
+            #specMenu {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .specMenuItem > div:first-child {
+                border-radius: 100%;
+                background: #DBDBDB;
+                width: 50px;
+                height: 50px;
+                line-height: 48px;
+                font-weight: bold;
+                font-size: 1.2em;
+                margin: 0 auto 10px;
+                color: white;
+            }
+            
+            .specMenuItem.selected > div:first-child {
+                background: #4F9FEA;
+            }
+        </style>
+
     </stripes:layout-component>
 
     <stripes:layout-component name="contents">
+        <div id="specMenu" class="row">
+            <div class="col-sm-1 col-xs-1">
+                <div class="specMenuItem">
+                    <div>1</div>
+                    <div>PCB specification</div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <hr>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <div class="specMenuItem">
+                    <div>2</div>
+                    <div>Layout</div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <hr>
+            </div>
+            <div class="col-sm-2 col-xs-1">
+                <div class="specMenuItem selected">
+                    <div>3</div>
+                    <div>Calculate price</div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <hr>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <div class="specMenuItem">
+                    <div>4</div>
+                    <div>Upload</div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <hr>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <div class="specMenuItem">
+                    <div>5</div>
+                    <div>Verify PCB</div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <hr>
+            </div>
+            <div class="col-sm-1 col-xs-1">
+                <div class="specMenuItem">
+                    <div>6</div>
+                    <div>Order & delivery</div>
+                </div>
+            </div>
+        </div>
         <div class="marginleft">
-            <table width="85%" border="0" cellspacing="0" cellpadding="0">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td align="left" valign="top" width="100%">
                         <table border="0" cellpadding="0">
                             <tr>
                                 <td colspan="2" align="left" valign="top">
-                                    <div id="ddtabs4" class="ddcolortabs">
-                                        <ul>
-                                            <li><a id="link_ct1" onclick="window.location = '${pageContext.request.contextPath}/qoute/Qoute.action?backToSpecification&specification=${actionBean.specification.id}';"><span>PCB specification</span></a></li>
-                                            <li><a id="link_ct2" onclick="window.location = '${pageContext.request.contextPath}/qoute/Qoute.action?backToSpecification&specification=${actionBean.specification.id}&tab=layout';"><span>Layout</span></a></li>
-                                            <li><a id="link_ct4" class="current"><span>Calculate Price</span></a></li>
-                                            <li><a id="link_ct3" class="disabled"><span>Upload</span></a></li>
-                                            <li><a id="link_ct5" class="disabled"><span>Verify PCB</span></a></li>
-                                            <li><a id="link_ct6" class="disabled"><span>Order & delivery</span></a></li>
-                                        </ul>
-                                    </div>
+                                    <%-- <div id="ddtabs4" class="ddcolortabs">
+                                         <ul>
+                                             <li><a id="link_ct1" onclick="window.location = '${pageContext.request.contextPath}/qoute/Qoute.action?backToSpecification&specification=${actionBean.specification.id}';"><span>PCB specification</span></a></li>
+                                             <li><a id="link_ct2" onclick="window.location = '${pageContext.request.contextPath}/qoute/Qoute.action?backToSpecification&specification=${actionBean.specification.id}&tab=layout';"><span>Layout</span></a></li>
+                                             <li><a id="link_ct4" class="current"><span>Calculate Price</span></a></li>
+                                             <li><a id="link_ct3" class="disabled"><span>Upload</span></a></li>
+                                             <li><a id="link_ct5" class="disabled"><span>Verify PCB</span></a></li>
+                                             <li><a id="link_ct6" class="disabled"><span>Order & delivery</span></a></li>
+                                         </ul>
+                                     </div>--%>
                                     <div class="panel panel-default">
                                         <div id="ct4" class="tabcontent">
                                             <div style="margin: 5px 0 0 6px;">

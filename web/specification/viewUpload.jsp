@@ -9,7 +9,7 @@
 
 <stripes:layout-render name="/layout/standard.jsp" title="Upload Gerber" home="Y">
     <stripes:layout-component name="contents">
-
+gsdfsd
         <stripes:form action="/qoute/Qoute.action" method="post" id="uploadForm" onsubmit="return false;">
             <stripes:hidden name="qoute" id="qouten" value=""/>
             <stripes:hidden name="specification" id="specific"/>
