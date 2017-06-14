@@ -38,6 +38,7 @@ public class Qoute extends Component {
     private Double tooling;
     double unitPrice = 0;
     private double version;
+    private Boolean createdFromTemplate;
 
     @Transient
     private boolean freez = false;
@@ -160,5 +161,19 @@ public class Qoute extends Component {
 
     public void setVersion(double version) {
         this.version = version;
+    }
+
+    /**
+     * @return the createdFromTemplate
+     */
+    public Boolean getCreatedFromTemplate() {
+        return createdFromTemplate;
+    }
+
+    /**
+     * @param createdFromTemplate the createdFromTemplate to set
+     */
+    public void setCreatedFromTemplate(Boolean createdFromTemplate) {
+        this.createdFromTemplate = createdFromTemplate;
     }
 }

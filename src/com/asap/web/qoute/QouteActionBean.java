@@ -219,13 +219,13 @@ public class QouteActionBean extends CatalogActionBean {
         priceprunit = specification.getRespriceperunit();
         tooling = specification.getRestestandtooling();
         freight = specification.getResfreightcost();
-        subtotal = priceprunit * quantity;     
-        
+        subtotal = priceprunit * quantity;
+
         total = specification.getRestotal();
         days = specification.getRestotaldays();
         weight = specification.getResweight();
-        
-         if (qoute == null) {
+
+        if (qoute == null) {
             qoute = new Qoute();
         }
 
@@ -248,7 +248,7 @@ public class QouteActionBean extends CatalogActionBean {
         specification.setAzproddays(apd);
 
         getContext().getRequest().getSession().setAttribute("qoute", qoute);
-        
+
         return new ForwardResolution("result.jsp");
     }
 
@@ -307,47 +307,48 @@ public class QouteActionBean extends CatalogActionBean {
     }
 
     private Qoute reCalculate(Qoute loQuote, boolean flagIsRO) {
-        specification = loQuote.getSpecification();
+        if (loQuote.getCreatedFromTemplate() == null || !loQuote.getCreatedFromTemplate()) {
+            specification = loQuote.getSpecification();
 
-        String tp = specification.getTransport();
-        double opq = specification.getOwnpanelquantity();
-        double azq = specification.getAzquantity();
-        double sgq = specification.getSgquantity();
-        double opd = specification.getOwnproddays();
-        double spd = specification.getSgproddays();
-        double apd = specification.getAzproddays();
+            String tp = specification.getTransport();
+            double opq = specification.getOwnpanelquantity();
+            double azq = specification.getAzquantity();
+            double sgq = specification.getSgquantity();
+            double opd = specification.getOwnproddays();
+            double spd = specification.getSgproddays();
+            double apd = specification.getAzproddays();
 
-        specification.setTransport(loQuote.getTransport());
-        specification.setOwnpanelquantity(loQuote.getQuantity());
-        specification.setAzquantity(loQuote.getQuantity());
-        specification.setSgquantity(loQuote.getQuantity());
-        specification.setOwnproddays(loQuote.getDays());
-        specification.setAzproddays(loQuote.getDays());
-        specification.setSgproddays(loQuote.getDays());
+            specification.setTransport(loQuote.getTransport());
+            specification.setOwnpanelquantity(loQuote.getQuantity());
+            specification.setAzquantity(loQuote.getQuantity());
+            specification.setSgquantity(loQuote.getQuantity());
+            specification.setOwnproddays(loQuote.getDays());
+            specification.setAzproddays(loQuote.getDays());
+            specification.setSgproddays(loQuote.getDays());
 
-        specification.processxls(getContext().getServletContext().getRealPath(SpecificationActionBean.filename));
+            specification.processxls(getContext().getServletContext().getRealPath(SpecificationActionBean.filename));
 
-        loQuote.setWeight(specification.getResweight());
-        loQuote.setDays(specification.getRestotaldays());
-        loQuote.setFreight(specification.getResfreightcost());
-        if (!flagIsRO) {
-            loQuote.setTooling(specification.getRestestandtooling());
-            loQuote.setTotal(specification.getRestotal());
-        } else {
-            loQuote.setTooling(0.0);
-            loQuote.setTotal(specification.getRestotalreorder());
+            loQuote.setWeight(specification.getResweight());
+            loQuote.setDays(specification.getRestotaldays());
+            loQuote.setFreight(specification.getResfreightcost());
+            if (!flagIsRO) {
+                loQuote.setTooling(specification.getRestestandtooling());
+                loQuote.setTotal(specification.getRestotal());
+            } else {
+                loQuote.setTooling(0.0);
+                loQuote.setTotal(specification.getRestotalreorder());
+            }
+            loQuote.setUnitPrice(specification.getRespriceperunit());
+            loQuote.setWorkingDays(specification.getResworkingdays());
+
+            specification.setTransport(tp);
+            specification.setOwnpanelquantity(opq);
+            specification.setAzquantity(azq);
+            specification.setSgquantity(sgq);
+            specification.setOwnproddays(opd);
+            specification.setSgproddays(spd);
+            specification.setAzproddays(apd);
         }
-        loQuote.setUnitPrice(specification.getRespriceperunit());
-        loQuote.setWorkingDays(specification.getResworkingdays());
-
-        specification.setTransport(tp);
-        specification.setOwnpanelquantity(opq);
-        specification.setAzquantity(azq);
-        specification.setSgquantity(sgq);
-        specification.setOwnproddays(opd);
-        specification.setSgproddays(spd);
-        specification.setAzproddays(apd);
-
         return loQuote;
     }
 

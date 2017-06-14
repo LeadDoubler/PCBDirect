@@ -138,7 +138,9 @@ public class ProductTemplateActionBean extends CatalogActionBean {
             newSpecification.setGerberdata(null);
             newSpecification.setGerberdata1(null);
             persist(newSpecification);
+            createQuoteFromTemplate(newSpecification);
             System.out.println("New spec: " + newSpecification);
+
         } catch (IllegalAccessException ex) {
             ex.printStackTrace();
         } catch (InvocationTargetException ex) {
@@ -146,6 +148,23 @@ public class ProductTemplateActionBean extends CatalogActionBean {
         }
         return new RedirectResolution("/specification/Specification.action?specification=" + newSpecification + "&fromTemplate=true");
         //return new RedirectResolution("/qoute/Qoute.action?setUploads&specification=" + newSpecification + "&qoute=" + quote + "&goBack=false");
+    }
+
+    public void createQuoteFromTemplate(Specification newSpecification) {
+        Qoute quote = new Qoute();
+        quote.setSpecification(newSpecification);
+        quote.setUser(newSpecification.getUser());
+        quote.setQuantity(getQuantity());
+        quote.setDays(getProductTemplate().getProductionDays());
+        quote.setTransport(getProductTemplate().getTransport());
+        quote.setTotal(getProductTemplate().getPrice());
+        quote.setUnitPrice(getUnitPrice());
+        quote.setTooling(0d);
+        quote.setFreight(0d);
+        quote.setCreatedFromTemplate(true);
+
+        persist(quote);
+        System.out.println("Saved new quote: " + quote);
     }
 
     public Resolution saveProductTemplate() {

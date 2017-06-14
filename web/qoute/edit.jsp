@@ -35,7 +35,7 @@
                 margin: 0 auto 10px;
                 color: white;
             }
-            
+
             .specMenuItem.selected > div:first-child {
                 background: #4F9FEA;
             }
@@ -138,7 +138,9 @@
                                                                             <span class="form_right">
                                                                                 <select name="transport">
                                                                                     <option value="Express" selected="selected">Express</option>
-                                                                                </select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, '<u>Economy</u>: Economy 5 working days.<br/><br/><u>Express</u>: Express 3 working days.<br/><br/><u>By Ship</u>: By ship 30 working days, large cargo.<br/><br/>* Delivery in Sweden, one aditional working day will be added.<br/>* Delivery in Norway, three aditional working day will be added.');" onmouseout="hideToolTip();"/>
+                                                                                    <option value="Economy" selected="selected">Economy</option>
+                                                                                    <option value="By Ship" selected="selected">By Ship</option>
+                                                                                </select><img class="info" src="../images/info.png" data-html="true" data-toggle="tooltip" data-placement="right" title="<u>Economy</u>: Economy 5 working days.<br/><br/><u>Express</u>: Express 3 working days.<br/><br/><u>By Ship</u>: By ship 30 working days, large cargo.<br/><br/>* Delivery in Sweden, one aditional working day will be added.<br/>* Delivery in Norway, three aditional working day will be added." />
                                                                             </span>
                                                                         </td>
                                                                     </tr>
@@ -155,7 +157,7 @@
                                                                                 </c:choose>--%>
                                                                             </span><br/>
                                                                             <span class="form_right" >
-                                                                                <stripes:text class="textwidthadjust" id="quantity" name="quantity" onblur="integerCheck($('#quantity'))"/><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Please enter the number of PCB\'s you would like to be quoted (Not panels)');" onmouseout="hideToolTip();">
+                                                                                <stripes:text class="textwidthadjust" id="quantity" name="quantity" onblur="integerCheck($('#quantity'))"/><img class="info" src="../images/info.png" data-html="true" data-toggle="tooltip" data-placement="right" title="Please enter the number of PCB\'s you would like to be quoted (Not panels)">
                                                                             </span>
                                                                         </td>
                                                                     </tr>
@@ -178,7 +180,7 @@
                                                                                     <%--<c:forEach var="i" begin="12" end="20" step="2">
                                                                                         <stripes:option value="${i}" label="${i}"/>
                                                                                     </c:forEach>--%>
-                                                                                </stripes:select><img class="info" src="../images/info.png" onmouseover="showToolTip(this, 'Select numbers of working days');" onmouseout="hideToolTip();"/>
+                                                                                </stripes:select><img class="info" src="../images/info.png" data-html="true" data-toggle="tooltip" data-placement="right" title="Select numbers of working days"/>
                                                                             </span>
                                                                         </td>
                                                                     </tr>

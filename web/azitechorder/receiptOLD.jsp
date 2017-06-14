@@ -277,12 +277,7 @@
                                                                                 <table width="90%" border="0" cellpadding="0" cellspacing="0">
                                                                                     <tr>
                                                                                         <td class="title">Transport</td>
-                                                                                        <td class="content">${actionBean.order.transport}&nbsp;
-                                                                                            <c:choose>
-                                                                                                <c:when test="${actionBean.order.transport == 'Express'}">- 3 days</c:when>
-                                                                                                <c:when test="${actionBean.order.transport == 'Economy'}">- 5 days</c:when>
-                                                                                                <c:when test="${actionBean.order.transport == 'By Ship'}">- 30 days</c:when>
-                                                                                            </c:choose>
+                                                                                        <td class="content">${actionBean.order.transport}
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>

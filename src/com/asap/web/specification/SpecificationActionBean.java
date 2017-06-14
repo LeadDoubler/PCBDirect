@@ -29,6 +29,7 @@ public class SpecificationActionBean extends CatalogActionBean {
 
     public static final String filename = "/scheme.xls";
     private Boolean fromTemplate;
+    private String tab;
 
     @ValidateNestedProperties({
         @Validate(field = "reference", required = true),
@@ -138,26 +139,31 @@ public class SpecificationActionBean extends CatalogActionBean {
         double opd = specification.getOwnproddays();
         double azd = specification.getAzproddays();
         double sgd = specification.getSgproddays();
-
+        System.out.println("Updating qoutes...");
         while (qoutes.hasNext()) {
             Qoute qoute = qoutes.next();
-            specification.setTransport(qoute.getTransport());
-            specification.setOwnpanelquantity(qoute.getQuantity());
-            specification.setAzquantity(qoute.getQuantity());
-            specification.setSgquantity(qoute.getQuantity());
-            specification.setOwnproddays(qoute.getWorkingDays());
-            specification.setAzproddays(qoute.getWorkingDays());
-            specification.setSgproddays(qoute.getWorkingDays());
+            System.out.println("Updating qoute: " + qoute);
+            System.out.println(qoute.getCreatedFromTemplate());
+            if (qoute.getCreatedFromTemplate() == null || !qoute.getCreatedFromTemplate()) {
+                System.out.println("Im changing..");
+                specification.setTransport(qoute.getTransport());
+                specification.setOwnpanelquantity(qoute.getQuantity());
+                specification.setAzquantity(qoute.getQuantity());
+                specification.setSgquantity(qoute.getQuantity());
+                specification.setOwnproddays(qoute.getWorkingDays());
+                specification.setAzproddays(qoute.getWorkingDays());
+                specification.setSgproddays(qoute.getWorkingDays());
 
-            specification.processxls(getContext().getServletContext().getRealPath(SpecificationActionBean.getFilename()));
+                specification.processxls(getContext().getServletContext().getRealPath(SpecificationActionBean.getFilename()));
 
-            qoute.setTotal((100 - specification.getUser().getDiscount().doubleValue()) * 0.01 * specification.getRestotal());
-            qoute.setUnitPrice(specification.getRespriceperunit());
-            qoute.setTooling(specification.getRestestandtooling());
-            qoute.setFreight(specification.getResfreightcost());
+                qoute.setTotal((100 - specification.getUser().getDiscount().doubleValue()) * 0.01 * specification.getRestotal());
+                qoute.setUnitPrice(specification.getRespriceperunit());
+                qoute.setTooling(specification.getRestestandtooling());
+                qoute.setFreight(specification.getResfreightcost());
 //            qoute.setWeight(specification.getResweight());
-            //persist(qoute);
-            System.out.println("Qoute updated: " + qoute);
+                //persist(qoute);
+                System.out.println("Qoute updated: " + qoute);
+            }
         }
 
         specification.setOwnpanelquantity(opq);
@@ -292,5 +298,19 @@ public class SpecificationActionBean extends CatalogActionBean {
      */
     public void setFromTemplate(Boolean fromTemplate) {
         this.fromTemplate = fromTemplate;
+    }
+
+    /**
+     * @return the tab
+     */
+    public String getTab() {
+        return tab;
+    }
+
+    /**
+     * @param tab the tab to set
+     */
+    public void setTab(String tab) {
+        this.tab = tab;
     }
 }

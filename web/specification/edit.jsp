@@ -4,7 +4,22 @@
     <stripes:layout-component name="head">
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/specification.js"></script>
+        <script>
 
+            if (${actionBean.tab == "layout"}) {
+                $('#referencepart').hide();
+                /*
+                 $('#link_ct2').addClass('current');
+                 $('#link_ct1').removeClass('current');
+                 */
+                $('#specMenu .selected').removeClass('selected');
+                $('#specMenu > div:nth-child(3) .specMenuItem').addClass('selected');
+
+                $('#topnext').hide();
+                $('#layouttopnext').show();
+                $('#ct2').show();
+            }
+        </script>
     </stripes:layout-component>
     <stripes:layout-component name="contents">
         <stripes:form action="/specification/Specification.action" method="post" id="specForm">
@@ -375,16 +390,7 @@
                                     </div>
                                 </div>
                                 <div id="pgBar" class="progress" style="visibility:hidden"></div>
-                                <a class="btn btn-default pull-right" onclick="javascript:updateGeneralspe();
-                                        if (!iserrorGeneralSpec) {
-                                            $('#referencepart').hide();
-                                            $('#link_ct2').addClass('current');
-                                            $('#link_ct1').removeClass('current');
-                                            $('#topnext').hide();
-                                            $('#layouttopnext').show();
-                                            $('#ct2').show();
-                                        } else {
-                                        }" href="#ct2">Next</a>
+             
                             </div>
                             <div id="ct2" class="tabcontent" style="<%=lsBlockLayout%>">
 
@@ -425,6 +431,10 @@
                                                 $('#link_ct2').removeClass('current');
                                                 $('#link_ct1').addClass('current');
                                                 $('#topnext').show();
+
+                                                $('#specMenu .selected').removeClass('selected');
+                                                $('#specMenu > div:nth-child(1) .specMenuItem').addClass('selected');
+
                                                 $('#layouttopnext').hide();">Back</a>
                                         <a class="btn btn-default pull-right" onclick="javascript:if (!iserror && !iserrorOwnpanel && !isSingleError) {
                                                     saveAndCreateQuote();
@@ -441,7 +451,7 @@
             #ddtabs4 {
                 display: none;
             }
-            
+
             #specMenu hr {
                 border-color: #dbdbdb;
             }
