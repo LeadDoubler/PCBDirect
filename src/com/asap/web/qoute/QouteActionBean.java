@@ -8,6 +8,7 @@
  */
 package com.asap.web.qoute;
 
+import com.asap.catalog.dao.ProductTemplate;
 import com.asap.catalog.dao.Qoute;
 import com.asap.catalog.dao.Specification;
 import com.asap.catalog.dao.User;
@@ -48,6 +49,7 @@ public class QouteActionBean extends CatalogActionBean {
     private double subtotal;
     private boolean sentEmail;
     private Boolean goBack;
+    private ProductTemplate productTemplate;
 
     public static final String filename = "/scheme.xls";
 
@@ -307,7 +309,6 @@ public class QouteActionBean extends CatalogActionBean {
     }
 
     private Qoute reCalculate(Qoute loQuote, boolean flagIsRO) {
-        if (loQuote.getCreatedFromTemplate() == null || !loQuote.getCreatedFromTemplate()) {
             specification = loQuote.getSpecification();
 
             String tp = specification.getTransport();
@@ -348,7 +349,6 @@ public class QouteActionBean extends CatalogActionBean {
             specification.setOwnproddays(opd);
             specification.setSgproddays(spd);
             specification.setAzproddays(apd);
-        }
         return loQuote;
     }
 
@@ -415,12 +415,12 @@ public class QouteActionBean extends CatalogActionBean {
         if (getContext().getRequest().getParameter("sp") != null && getContext().getRequest().getParameter("sp").equals("r")) {
             return new RedirectResolution("/qoute/Qoute.action?initializeReorder=&specification=" + this.specification);
         } else {
-            return new RedirectResolution("/qoute/Qoute.action?specification=" + this.specification);
+            return new RedirectResolution("/qoute/Qoute.action?specification=" + this.specification + "&productTemplate=" + getProductTemplate());
         }
     }
 
     public Resolution backToSpecification() {
-        return new RedirectResolution("/specification/Specification.action?specification=" + specification.getId() + "&tab=" + getContext().getRequest().getParameter("tab"));
+        return new RedirectResolution("/specification/Specification.action?specification=" + specification.getId() + "&tab=" + getContext().getRequest().getParameter("tab") + "&fromTemplate=" + getContext().getRequest().getParameter("fromTemplate") + "&productTemplate=" + getProductTemplate() + "&quote=" + getQoute());
     }
 
     public Resolution backToSpecificationRO() {
@@ -661,5 +661,19 @@ public class QouteActionBean extends CatalogActionBean {
      */
     public void setGoBack(Boolean goBack) {
         this.goBack = goBack;
+    }
+
+    /**
+     * @return the productTemplate
+     */
+    public ProductTemplate getProductTemplate() {
+        return productTemplate;
+    }
+
+    /**
+     * @param productTemplate the productTemplate to set
+     */
+    public void setProductTemplate(ProductTemplate productTemplate) {
+        this.productTemplate = productTemplate;
     }
 }

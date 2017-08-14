@@ -116,6 +116,7 @@ public class ProductTemplateActionBean extends CatalogActionBean {
     public Resolution buyTemplate() {
         System.out.println("Buying new template..");
         Specification newSpecification = new Specification();
+        Qoute quote = null;
         try {
             BeanUtils.copyProperties(newSpecification, getProductTemplate().getSpecification());
 
@@ -134,11 +135,12 @@ public class ProductTemplateActionBean extends CatalogActionBean {
             newSpecification.setTransport(getProductTemplate().getTransport());
             newSpecification.setResquantity(getQuantity());
             newSpecification.setResworkingdays(getProductTemplate().getProductionDays());
+            newSpecification.setOwnproddays(getProductTemplate().getProductionDays());
             newSpecification.setLayout("Single");
             newSpecification.setGerberdata(null);
             newSpecification.setGerberdata1(null);
             persist(newSpecification);
-            createQuoteFromTemplate(newSpecification);
+            quote = createQuoteFromTemplate(newSpecification);
             System.out.println("New spec: " + newSpecification);
 
         } catch (IllegalAccessException ex) {
@@ -146,25 +148,36 @@ public class ProductTemplateActionBean extends CatalogActionBean {
         } catch (InvocationTargetException ex) {
             ex.printStackTrace();
         }
-        return new RedirectResolution("/specification/Specification.action?specification=" + newSpecification + "&fromTemplate=true");
+        return new RedirectResolution("/specification/Specification.action?specification=" + newSpecification + "&fromTemplate=true&quote=" + quote + "&productTemplate=" + getProductTemplate());
         //return new RedirectResolution("/qoute/Qoute.action?setUploads&specification=" + newSpecification + "&qoute=" + quote + "&goBack=false");
     }
 
-    public void createQuoteFromTemplate(Specification newSpecification) {
+    public Qoute createQuoteFromTemplate(Specification newSpecification) {
         Qoute quote = new Qoute();
         quote.setSpecification(newSpecification);
         quote.setUser(newSpecification.getUser());
         quote.setQuantity(getQuantity());
-        quote.setDays(getProductTemplate().getProductionDays());
+
+        Double days = getProductTemplate().getProductionDays();
+        /*
+        if (getProductTemplate().getTotalPrintSize() > 0.1) {
+            days = days + 3;
+        } else {
+            days++;
+        }
+         */
+        quote.setDays(days);
         quote.setTransport(getProductTemplate().getTransport());
         quote.setTotal(getProductTemplate().getPrice());
-        quote.setUnitPrice(getUnitPrice());
+
+        /* quote.setUnitPrice(getUnitPrice());
         quote.setTooling(0d);
         quote.setFreight(0d);
         quote.setCreatedFromTemplate(true);
-
+         */
         persist(quote);
         System.out.println("Saved new quote: " + quote);
+        return quote;
     }
 
     public Resolution saveProductTemplate() {

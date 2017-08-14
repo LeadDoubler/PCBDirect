@@ -118,6 +118,7 @@
                                         <div id="ct4" class="tabcontent">
                                             <div style="margin: 5px 0 0 6px;">
                                                 <stripes:form action="/qoute/Qoute.action" focus="" method="post" id="form">
+                                                    <stripes:hidden name="productTemplate"/>
                                                     <stripes:hidden name="qoute" id="qouten" value=""/>
                                                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                                         <tr>
@@ -138,8 +139,8 @@
                                                                             <span class="form_right">
                                                                                 <select name="transport">
                                                                                     <option value="Express" selected="selected">Express</option>
-                                                                                    <option value="Economy" selected="selected">Economy</option>
-                                                                                    <option value="By Ship" selected="selected">By Ship</option>
+                                                                                    <option value="Economy">Economy</option>
+                                                                                    <option value="By Ship">By Ship</option>
                                                                                 </select><img class="info" src="../images/info.png" data-html="true" data-toggle="tooltip" data-placement="right" title="<u>Economy</u>: Economy 5 working days.<br/><br/><u>Express</u>: Express 3 working days.<br/><br/><u>By Ship</u>: By ship 30 working days, large cargo.<br/><br/>* Delivery in Sweden, one aditional working day will be added.<br/>* Delivery in Norway, three aditional working day will be added." />
                                                                             </span>
                                                                         </td>
@@ -277,7 +278,13 @@
                                                 <div style="margin: 5px 0 0 6px;"><span class="title">All prices are in ${actionBean.specification.user.currency}</span></div>
 
                                                 <div style="margin: 5px 0 0 6px;">
-                                                    <span><input type="button" class="login" style="cursor:pointer" value="Back" onclick="window.location = '${pageContext.request.contextPath}/qoute/Qoute.action?backToSpecification&specification=${actionBean.specification.id}&tab=layout';"/></span>
+                                                    <c:set var="tempQuote" value=""></c:set>
+                                                    <c:forEach var="qoute" items="${actionBean.qoutes}">
+                                                        <c:if test="${qoute.createdFromTemplate}">
+                                                            <c:set var="tempQuote" value="${qoute.id}"></c:set>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <span><input type="button" class="login" style="cursor:pointer" value="Back" onclick="window.location = '${pageContext.request.contextPath}/qoute/Qoute.action?backToSpecification&specification=${actionBean.specification.id}&tab=layout<c:if test="${not empty tempQuote}">&fromTemplate=true&qoute=${tempQuote}&productTemplate=${actionBean.productTemplate}</c:if>';"/></span>
 
                                                     <c:choose>
                                                         <c:when test="${actionBean.sentEmail}"><span style="color:red;font-size: 11px;font-family:Verdana,arial,serif;">An email with your quotes has been sent to you</span></c:when>
@@ -293,6 +300,7 @@
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </stripes:form>
+                                                <br/>
                                             </div>
                                         </div>
                                     </div>

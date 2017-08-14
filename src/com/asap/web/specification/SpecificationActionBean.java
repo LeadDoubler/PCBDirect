@@ -8,6 +8,7 @@
  */
 package com.asap.web.specification;
 
+import com.asap.catalog.dao.ProductTemplate;
 import com.asap.catalog.dao.Qoute;
 import com.asap.catalog.dao.Specification;
 import com.asap.catalog.dao.User;
@@ -39,6 +40,8 @@ public class SpecificationActionBean extends CatalogActionBean {
     private Specification specification;
     private Specification showspec;
     private User user;
+    private Qoute quote;
+    private ProductTemplate productTemplate;
 
     /**
      * Creates a new instance of SpecificationActionBean
@@ -139,13 +142,9 @@ public class SpecificationActionBean extends CatalogActionBean {
         double opd = specification.getOwnproddays();
         double azd = specification.getAzproddays();
         double sgd = specification.getSgproddays();
-        System.out.println("Updating qoutes...");
         while (qoutes.hasNext()) {
             Qoute qoute = qoutes.next();
-            System.out.println("Updating qoute: " + qoute);
-            System.out.println(qoute.getCreatedFromTemplate());
             if (qoute.getCreatedFromTemplate() == null || !qoute.getCreatedFromTemplate()) {
-                System.out.println("Im changing..");
                 specification.setTransport(qoute.getTransport());
                 specification.setOwnpanelquantity(qoute.getQuantity());
                 specification.setAzquantity(qoute.getQuantity());
@@ -162,7 +161,6 @@ public class SpecificationActionBean extends CatalogActionBean {
                 qoute.setFreight(specification.getResfreightcost());
 //            qoute.setWeight(specification.getResweight());
                 //persist(qoute);
-                System.out.println("Qoute updated: " + qoute);
             }
         }
 
@@ -199,8 +197,10 @@ public class SpecificationActionBean extends CatalogActionBean {
             specification.processxls(getContext().getServletContext().getRealPath(filename));
             persist(specification);
         }
-        return new RedirectResolution("/qoute/Qoute.action?specification=" + specification.getId());
+
+        return new RedirectResolution("/qoute/Qoute.action?specification=" + specification.getId() + "&productTemplate=" + getProductTemplate());
     }
+
 
     public Resolution saveandBack() {
         if (getSession().isDirty()) {
@@ -312,5 +312,33 @@ public class SpecificationActionBean extends CatalogActionBean {
      */
     public void setTab(String tab) {
         this.tab = tab;
+    }
+
+    /**
+     * @return the quote
+     */
+    public Qoute getQuote() {
+        return quote;
+    }
+
+    /**
+     * @param quote the quote to set
+     */
+    public void setQuote(Qoute quote) {
+        this.quote = quote;
+    }
+
+    /**
+     * @return the productTemplate
+     */
+    public ProductTemplate getProductTemplate() {
+        return productTemplate;
+    }
+
+    /**
+     * @param productTemplate the productTemplate to set
+     */
+    public void setProductTemplate(ProductTemplate productTemplate) {
+        this.productTemplate = productTemplate;
     }
 }

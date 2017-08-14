@@ -34,7 +34,6 @@
         <div id="result">
             <hr style="border-color: #b0b0b0;">
             <h5>Units: <span id="units"></span></h5>
-            <h5>Price per unit: <strong>DKK</strong> <span id="unitPrice"></span></h5>
                 <stripes:form id="quoteForm" beanclass="${actionBean.class}">
                     <stripes:hidden name="productTemplate"></stripes:hidden>
                     <stripes:hidden id="specWidth" name="width"></stripes:hidden>
@@ -79,15 +78,12 @@
                     var m2 = (width * length) / 10000 / 100;
 
                     var units = parseInt(total / m2);
-                    var unitPrice = (Math.round((price / units) * 100) / 100).toString().replace(".", ",");
 
                     $('#units').text(units);
-                    $('#unitPrice').text(unitPrice);
 
                     $('#specQuantity').val(units);
                     $('#specWidth').val(width);
                     $('#specHeight').val(length);
-                    $('#specUnitPrice').val(unitPrice);
 
                     $('#result').slideDown();
                 } else {

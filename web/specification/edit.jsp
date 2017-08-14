@@ -25,6 +25,11 @@
         <stripes:form action="/specification/Specification.action" method="post" id="specForm">
             <stripes:hidden class="form-control" name="specification" id="specific"/>
             <stripes:hidden class="form-control" name="specification.user"/>
+            <stripes:hidden class="form-control" name="productTemplate"/>
+            <stripes:hidden class="form-control" name="tab"/>
+            <stripes:hidden class="form-control" name="quote"/>
+            <stripes:hidden class="form-control" name="quote.createdFromTemplate"/>
+            <stripes:hidden class="form-control" name="quote.days"/>
 
             <div id="notused" class="marginleft" style="display:none;">
                 <%--<stripes:text class="form-control" name="specification.azproddays"/>
@@ -390,7 +395,7 @@
                                     </div>
                                 </div>
                                 <div id="pgBar" class="progress" style="visibility:hidden"></div>
-             
+
                             </div>
                             <div id="ct2" class="tabcontent" style="<%=lsBlockLayout%>">
 

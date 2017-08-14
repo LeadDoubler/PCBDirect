@@ -78,12 +78,12 @@
                     <%
                         if(request.getParameter("sp")!=null && request.getParameter("sp").equals("r")){
                     %>
-                    <td colspan="2"><input class="login" type="button" style="cursor:pointer;" value="Add to Quote" onclick="window.location='${pageContext.request.contextPath}/qoute/Qoute.action?addToCart&sp=r&specification=${actionBean.specification.id}'"/></td>
+                    <td colspan="2"><input class="login" type="button" style="cursor:pointer;" value="Add to Quote" onclick="window.location='${pageContext.request.contextPath}/qoute/Qoute.action?addToCart&sp=r&specification=${actionBean.specification.id}&productTemplate=${actionBean.productTemplate}'"/></td>
                     <%
                         }
                         else{
                     %>
-                    <td colspan="2"><input class="login" type="button" style="cursor:pointer;" value="Add to Quote" onclick="window.location='${pageContext.request.contextPath}/qoute/Qoute.action?addToCart&specification=${actionBean.specification.id}'"/></td>
+                    <td colspan="2"><input class="login" type="button" style="cursor:pointer;" value="Add to Quote" onclick="window.location='${pageContext.request.contextPath}/qoute/Qoute.action?addToCart&specification=${actionBean.specification.id}&productTemplate=${actionBean.productTemplate}'"/></td>
                     <%
                         }
                     %>
